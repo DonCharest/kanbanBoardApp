@@ -56,7 +56,7 @@ export class KanbanBoardComponent implements OnInit {
     this.accepted = [];
   }
 
-  openDialog(): void {
+  public openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '250px',
       data: {
@@ -80,7 +80,7 @@ export class KanbanBoardComponent implements OnInit {
 
   // function to calculate and update the index of the card after being moved in current array,
   // or droped into a new array
-  drop(event: CdkDragDrop<string[]>) {
+  public drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
