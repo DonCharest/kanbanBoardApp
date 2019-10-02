@@ -1,0 +1,160 @@
+<div class="kanban-board" cdkDropListGroup>
+  <hr class="hr-main" />
+
+  <div class="card-container">
+    <h2>
+      <button
+        type="button"
+        class="btn btn-success btn-circle"
+        (click)="openDialog()"
+      >
+        <i class="glyphicon glyphicon-plus"></i>
+      </button>
+      To Do
+    </h2>
+    <cdk-virtual-scroll-viewport itemSize="90">
+      <div
+        cdkDropList
+        [cdkDropListData]="todo"
+        class="card-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          [className]="
+            card.type === 'issue'
+              ? 'card-issue'
+              : card.type === 'task'
+              ? 'card-task'
+              : 'card-box'
+          "
+          *ngFor="let card of todo; let i = index"
+          cdkDrag
+        >
+          <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
+          Title: {{ card.title }} <br />
+          Story points: {{ card.points }} <br />
+          Assinged to: {{ card.assignedTo }} <br />
+          Type: {{ card.type }}
+          <button
+            type="button"
+            class="btn btn-danger btn-circle"
+            (click)="removeToDo(i)"
+          >
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <div class="card-container">
+    <h2>In Progress</h2>
+    <cdk-virtual-scroll-viewport itemSize="90">
+      <div
+        cdkDropList
+        [cdkDropListData]="wip"
+        class="card-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          [className]="
+            card.type === 'issue'
+              ? 'card-issue'
+              : card.type === 'task'
+              ? 'card-task'
+              : 'card-box'
+          "
+          *ngFor="let card of wip; let i = index"
+          cdkDrag
+        >
+          <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
+          Title: {{ card.title }} <br />
+          Story points: {{ card.points }} <br />
+          Assinged to: {{ card.assignedTo }} <br />
+          Type: {{ card.type }}
+          <button
+            type="button"
+            class="btn btn-danger btn-circle"
+            (click)="removeWiP(i)"
+          >
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <div class="card-container">
+    <h2>Done</h2>
+    <cdk-virtual-scroll-viewport itemSize="90">
+      <div
+        cdkDropList
+        [cdkDropListData]="done"
+        class="card-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          [className]="
+            card.type === 'issue'
+              ? 'card-issue'
+              : card.type === 'task'
+              ? 'card-task'
+              : 'card-box'
+          "
+          *ngFor="let card of done; let i = index"
+          cdkDrag
+        >
+          <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
+          Title: {{ card.title }} <br />
+          Story points: {{ card.points }} <br />
+          Assinged to: {{ card.assignedTo }} <br />
+          Type: {{ card.type }}
+          <button
+            type="button"
+            class="btn btn-danger btn-circle"
+            (click)="removeDone(i)"
+          >
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+
+  <div class="card-container">
+    <h2>Accepted</h2>
+    <cdk-virtual-scroll-viewport itemSize="90">
+      <div
+        cdkDropList
+        [cdkDropListData]="accepted"
+        class="card-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div
+          [className]="
+            card.type === 'issue'
+              ? 'card-issue'
+              : card.type === 'task'
+              ? 'card-task'
+              : 'card-box'
+          "
+          *ngFor="let card of accepted; let i = index"
+          cdkDrag
+        >
+          <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
+          Title: {{ card.title }} <br />
+          Story points: {{ card.points }} <br />
+          Assinged to: {{ card.assignedTo }} <br />
+          Type: {{ card.type }}
+          <button
+            type="button"
+            class="btn btn-danger btn-circle"
+            (click)="removeAccepted(i)"
+          >
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

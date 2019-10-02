@@ -1,0 +1,23 @@
+label {
+  float: left;
+}
+span {
+  display: block;
+  overflow: hidden;
+  padding: 0 4px 0 6px;
+}
+input {
+  width: 100%;
+}
+mat-label {
+  font-weight: bold;
+}
+mat-select {
+  margin-top: 15px;
+}
+hr {
+  margin-bottom: 25px;
+}
+.content {
+  background-color: rgb(240, 238, 236);
+}

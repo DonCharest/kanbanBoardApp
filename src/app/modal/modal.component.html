@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Create New Card</h1>
+
+<div class="content" mat-dialog-content>
+  <mat-form-field>
+    <div>
+      <label>Title:</label>
+      <span><input matInput [(ngModel)]="data.title"/></span>
+      <hr />
+    </div>
+
+    <div>
+      <label>points:</label>
+      <span><input matInput [(ngModel)]="data.points"/></span>
+      <hr />
+    </div>
+
+    <div>
+      <label>assignedTo:</label>
+      <span><input matInput [(ngModel)]="data.assignedTo"/></span>
+      <hr />
+    </div>
+
+    <div>
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="data.type">
+        <mat-option value="story">Story</mat-option>
+        <mat-option value="task">Task</mat-option>
+        <mat-option value="issue">Issue</mat-option>
+      </mat-select>
+    </div>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button class="btn btn-basic" (click)="onNoClick()">Exit</button>
+  <button
+    mat-button
+    class="btn btn-primary"
+    [(mat-dialog-close)]="data"
+    cdkFocusInitial
+  >
+    Save
+  </button>
+</div>
