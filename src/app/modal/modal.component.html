@@ -2,32 +2,23 @@
 
 <div class="content" mat-dialog-content>
   <mat-form-field>
-    <div>
-      <label>Title:</label>
-      <span><input matInput [(ngModel)]="data.title"/></span>
-      <hr />
-    </div>
+    <input matInput placeholder="Title:" [(ngModel)]="data.title" />
+  </mat-form-field>
 
-    <div>
-      <label>points:</label>
-      <span><input matInput [(ngModel)]="data.points"/></span>
-      <hr />
-    </div>
+  <mat-form-field>
+    <input matInput placeholder="Points:" [(ngModel)]="data.points" />
+  </mat-form-field>
 
-    <div>
-      <label>assignedTo:</label>
-      <span><input matInput [(ngModel)]="data.assignedTo"/></span>
-      <hr />
-    </div>
+  <mat-form-field>
+    <input matInput placeholder="Assigned to:" [(ngModel)]="data.assignedTo" />
+  </mat-form-field>
 
-    <div>
-      <mat-label>Select an option</mat-label>
-      <mat-select [(value)]="data.type">
-        <mat-option value="story">Story</mat-option>
-        <mat-option value="task">Task</mat-option>
-        <mat-option value="issue">Issue</mat-option>
-      </mat-select>
-    </div>
+  <mat-form-field>
+    <mat-select placeholder="Select" [(value)]="data.type">
+      <mat-option value="story">Story</mat-option>
+      <mat-option value="task">Task</mat-option>
+      <mat-option value="issue">Issue</mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 

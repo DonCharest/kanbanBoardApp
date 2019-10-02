@@ -68,7 +68,7 @@ export class KanbanBoardComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(data => {
-      console.log('going to push now!');
+      // console.log('going to push now!');
       this.todo.push({
         title: data.title,
         points: data.points,
