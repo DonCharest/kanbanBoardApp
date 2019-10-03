@@ -1,10 +1,7 @@
-import {
-  // ChangeDetectionStrategy,
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../modal/modal.component';
+import { ModalEditComponent } from '../modal-edit/modal-edit.component';
 
 import {
   CdkDragDrop,
@@ -16,7 +13,6 @@ import {
   selector: 'app-kanban-board',
   templateUrl: './kanban-board.component.html',
   styleUrls: ['./kanban-board.component.css']
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class KanbanBoardComponent implements OnInit {
   todo: any[];
@@ -56,15 +52,40 @@ export class KanbanBoardComponent implements OnInit {
     this.accepted = [];
   }
 
+  /* Modal to edit cards */
+  public openDialogEdit(
+    title: string,
+    points: number,
+    assignedTo: string,
+    type: string
+  ): void {
+    const dialogRefEdit = this.dialog.open(ModalEditComponent, {
+      width: '250px',
+      data: {
+        title,
+        points,
+        assignedTo,
+        type
+      }
+    });
+
+    dialogRefEdit.afterClosed().subscribe(data => {
+      // console.log('going to push now!');
+      // this.todo.push
+      console.log({
+        title: data.title,
+        points: data.points,
+        assignedTo: data.assignedTo,
+        type: data.type
+      });
+    });
+  }
+
+  /* Modal to create new cards */
   public openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '250px',
-      data: {
-        title: this.title,
-        points: this.points,
-        assignedTo: this.assignedTo,
-        type: this.type
-      }
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(data => {

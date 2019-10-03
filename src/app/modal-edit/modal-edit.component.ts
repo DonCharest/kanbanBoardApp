@@ -3,21 +3,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogData } from '../DialogData';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  selector: 'app-modal-edit',
+  templateUrl: './modal-edit.component.html',
+  styleUrls: ['./modal-edit.component.css']
 })
-export class ModalComponent implements OnInit {
-  // value = 'story';
-  // public selected = 'story';
-
+export class ModalEditComponent implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<ModalComponent>,
+    public dialogRefEdit: MatDialogRef<ModalEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRefEdit.close();
   }
 
   ngOnInit() {}

@@ -15,9 +15,15 @@ import {
   MatSelectModule,
   MatFormFieldModule
 } from '@angular/material';
+import { ModalEditComponent } from './modal-edit/modal-edit.component';
 
 @NgModule({
-  declarations: [AppComponent, KanbanBoardComponent, ModalComponent],
+  declarations: [
+    AppComponent,
+    KanbanBoardComponent,
+    ModalComponent,
+    ModalEditComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,6 +39,6 @@ import {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent]
+  entryComponents: [ModalComponent, ModalEditComponent]
 })
 export class AppModule {}
