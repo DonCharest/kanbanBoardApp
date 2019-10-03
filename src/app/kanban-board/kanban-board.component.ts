@@ -23,10 +23,14 @@ export class KanbanBoardComponent implements OnInit {
   points: number;
   assignedTo: string;
   type: string;
+  id: string;
+  count: number;
 
-  items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
+  // items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
 
   constructor(public dialog: MatDialog) {
+    this.count = 1;
+
     this.todo = [
       { title: 'Get to work', points: 1, assignedTo: 'me', type: 'story' },
       {
@@ -57,7 +61,9 @@ export class KanbanBoardComponent implements OnInit {
     title: string,
     points: number,
     assignedTo: string,
-    type: string
+    type: string,
+    index: number,
+    id: string
   ): void {
     const dialogRefEdit = this.dialog.open(ModalEditComponent, {
       width: '250px',
@@ -65,19 +71,30 @@ export class KanbanBoardComponent implements OnInit {
         title,
         points,
         assignedTo,
-        type
+        type,
+        index,
+        id
       }
     });
-
+    console.log('id: ' + id);
     dialogRefEdit.afterClosed().subscribe(data => {
-      // console.log('going to push now!');
-      // this.todo.push
-      console.log({
+      const obj = {
+        id: data.id,
         title: data.title,
         points: data.points,
         assignedTo: data.assignedTo,
         type: data.type
-      });
+      };
+
+      if (this.todo.some(data => data.id === id)) {
+        this.todo.splice(index, 1, obj);
+      } else if (this.wip.some(data => data.id === id)) {
+        this.wip.splice(index, 1, obj);
+      } else if (this.done.some(data => data.id === id)) {
+        this.done.splice(index, 1, obj);
+      } else if (this.accepted.some(data => data.id === id)) {
+        this.accepted.splice(index, 1, obj);
+      }
     });
   }
 
@@ -87,15 +104,16 @@ export class KanbanBoardComponent implements OnInit {
       width: '250px',
       data: {}
     });
-
     dialogRef.afterClosed().subscribe(data => {
       // console.log('going to push now!');
       this.todo.push({
+        id: 'PROJ-0000' + this.count,
         title: data.title,
         points: data.points,
         assignedTo: data.assignedTo,
         type: data.type
       });
+      this.count++;
     });
   }
 
