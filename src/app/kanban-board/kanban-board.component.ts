@@ -20,10 +20,12 @@ export class KanbanBoardComponent implements OnInit {
   done: any[];
   accepted: any[];
   title: string;
-  points: number;
+  // points: number;
+  priority: string;
   assignedTo: string;
   type: string;
   id: string;
+  color: string;
   count: number;
 
   // items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
@@ -32,25 +34,87 @@ export class KanbanBoardComponent implements OnInit {
     this.count = 1;
 
     this.todo = [
-      { title: 'Get to work', points: 1, assignedTo: 'me', type: 'story' },
       {
-        title: 'Pick up groceries',
-        points: 5,
-        assignedTo: 'you',
-        type: 'issue'
+        id: 'TEST-10001',
+        title: 'As a <type of user>, I want <some goal> so that <some reason>.',
+        priority: 'minor',
+        assignedTo: 'Jen Hayes',
+        type: 'story',
+        color: 'default'
       },
-      { title: 'Go home', points: 3, assignedTo: 'him', type: 'story' },
-      { title: 'Fall asleep', points: 2, assignedTo: 'her', type: 'task' }
+      {
+        id: 'TEST-10002',
+        title:
+          'As a power user, I can specify files or folders to backup based on file size, date created and date modified.',
+        priority: 'blocker',
+        assignedTo: 'Joe Johnson',
+        type: 'issue',
+        color: 'default'
+      },
+      {
+        id: 'TEST-10003',
+        title:
+          'As a user, I can indicate folders not to backup so that my backup drive isn\'t filled up with things I don\'t need saved.',
+        priority: 'major',
+        assignedTo: 'Steve Price',
+        type: 'story',
+        color: 'default'
+      },
+      {
+        id: 'TEST-10004',
+        title:
+          'As an Acquisition Gateway User, I need to select an Auction product in the Acquisition ordering platform so that I can bid on it.',
+        priority: 'major',
+        assignedTo: 'Jeff Goldman',
+        type: 'task',
+        color: 'default'
+      }
     ];
 
     this.wip = [];
 
     this.done = [
-      { title: 'Get up', points: 1, assignedTo: 'me', type: 'story' },
-      { title: 'Brush teeth', points: 1, assignedTo: 'you', type: 'task' },
-      { title: 'Take a shower', points: 1, assignedTo: 'you', type: 'story' },
-      { title: 'Check e-mail', points: 1, assignedTo: 'me', type: 'issue' },
-      { title: 'Walk dog', points: 1, assignedTo: 'her', type: 'story' }
+      {
+        id: 'TEST-10005',
+        title:
+          'As a Content Owner, I want to be able to create product content so that I can provide information and market to customers.',
+        priority: 'minor',
+        assignedTo: 'Gary Goulet',
+        type: 'story',
+        color: 'default'
+      },
+      {
+        id: 'TEST-10006',
+        title: 'Brush teeth',
+        priority: 'major',
+        assignedTo: 'you',
+        type: 'task',
+        color: 'default'
+      },
+      {
+        id: 'TEST-10007',
+        title: 'Take a shower',
+        priority: 'major',
+        assignedTo: 'you',
+        type: 'story',
+        color: 'default'
+      },
+      {
+        id: 'TEST-10008',
+        title: 'Check e-mail',
+        priority: 'blocker',
+        assignedTo: 'me',
+        type: 'issue',
+        color: 'default'
+      },
+      {
+        id: 'TEST-10009',
+        title: 'Walk dog',
+        priority: 'minor',
+        assignedTo: 'her',
+        type: 'story',
+        color: 'default'
+      }
     ];
 
     this.accepted = [];
@@ -59,21 +123,23 @@ export class KanbanBoardComponent implements OnInit {
   /* Modal to edit cards */
   public openDialogEdit(
     title: string,
-    points: number,
+    priority: string,
     assignedTo: string,
     type: string,
     index: number,
-    id: string
+    id: string,
+    color: string
   ): void {
     const dialogRefEdit = this.dialog.open(ModalEditComponent, {
-      width: '250px',
+      width: '350px',
       data: {
         title,
-        points,
+        priority,
         assignedTo,
         type,
         index,
-        id
+        id,
+        color
       }
     });
     console.log('id: ' + id);
@@ -81,9 +147,10 @@ export class KanbanBoardComponent implements OnInit {
       const obj = {
         id: data.id,
         title: data.title,
-        points: data.points,
+        priority: data.priority,
         assignedTo: data.assignedTo,
-        type: data.type
+        type: data.type,
+        color: data.color
       };
 
       if (this.todo.some(data => data.id === id)) {
@@ -101,7 +168,7 @@ export class KanbanBoardComponent implements OnInit {
   /* Modal to create new cards */
   public openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '250px',
+      width: '350px',
       data: {}
     });
     dialogRef.afterClosed().subscribe(data => {
@@ -109,9 +176,10 @@ export class KanbanBoardComponent implements OnInit {
       this.todo.push({
         id: 'PROJ-0000' + this.count,
         title: data.title,
-        points: data.points,
+        priority: data.priority,
         assignedTo: data.assignedTo,
-        type: data.type
+        type: data.type,
+        color: data.color
       });
       this.count++;
     });

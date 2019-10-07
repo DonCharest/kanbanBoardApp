@@ -1,6 +1,4 @@
 <div class="kanban-board" cdkDropListGroup>
-  <hr class="hr-main" />
-
   <div class="card-container">
     <h2>
       <button
@@ -30,17 +28,40 @@
           *ngFor="let card of todo; let i = index"
           cdkDrag
         >
-          <div
-            id="todo"
-            class="card-custom-placeholder"
-            *cdkDragPlaceholder
-          ></div>
-          ID: {{ card.id }} <br />
-          Title: {{ card.title }} <br />
-          Story points: {{ card.points }} <br />
-          Assinged to: {{ card.assignedTo }} <br />
-          Type: {{ card.type }}
-
+          <!-- <div
+            id="color-div"
+            [className]="
+              card.color === 'blue'
+                ? 'card-blue'
+                : card.color === 'yellow'
+                ? 'card-yellow'
+                : 'card-default'
+            "
+          >
+            {{ card.color }}
+          </div> -->
+          <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
+          <div class="card-text-group">
+            <div class="card-id">
+              {{ card.id }}
+              <div class="card-priority">
+                <i
+                  [className]="
+                    card.priority === 'blocker'
+                      ? 'glyphicon glyphicon-ban-circle'
+                      : card.priority === 'major'
+                      ? 'glyphicon glyphicon-arrow-up'
+                      : 'glyphicon glyphicon-arrow-down'
+                  "
+                ></i>
+                {{ card.priority }}
+              </div>
+            </div>
+            <div class="card-title">{{ card.title }}</div>
+            <div class="card-assignedTo">
+              Assigned to: {{ card.assignedTo }}
+            </div>
+          </div>
           <div class="btn-toolbar" role="toolbar">
             <button
               type="button"
@@ -55,11 +76,12 @@
               (click)="
                 openDialogEdit(
                   card.title,
-                  card.points,
+                  card.priority,
                   card.assignedTo,
                   card.type,
                   i,
-                  card.id
+                  card.id,
+                  card.color
                 )
               "
             >
@@ -92,16 +114,32 @@
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
-          ID: {{ card.id }} <br />
-          Title: {{ card.title }} <br />
-          Story points: {{ card.points }} <br />
-          Assinged to: {{ card.assignedTo }} <br />
-          Type: {{ card.type }}
+          <div class="card-text-group">
+            <div class="card-id">
+              {{ card.id }}
+              <div class="card-priority">
+                <i
+                  [className]="
+                    card.priority === 'blocker'
+                      ? 'glyphicon glyphicon-ban-circle'
+                      : card.priority === 'major'
+                      ? 'glyphicon glyphicon-arrow-up'
+                      : 'glyphicon glyphicon-arrow-down'
+                  "
+                ></i>
+                {{ card.priority }}
+              </div>
+            </div>
+            <div class="card-title">{{ card.title }}</div>
+            <div class="card-assignedTo">
+              Assigned to: {{ card.assignedTo }}
+            </div>
+          </div>
           <div class="btn-toolbar" role="toolbar">
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeWiP(i)"
+              (click)="removeToDo(i)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -111,7 +149,7 @@
               (click)="
                 openDialogEdit(
                   card.title,
-                  card.points,
+                  card.priority,
                   card.assignedTo,
                   card.type,
                   i,
@@ -148,16 +186,32 @@
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
-          ID: {{ card.id }} <br />
-          Title: {{ card.title }} <br />
-          Story points: {{ card.points }} <br />
-          Assinged to: {{ card.assignedTo }} <br />
-          Type: {{ card.type }}
+          <div class="card-text-group">
+            <div class="card-id">
+              {{ card.id }}
+              <div class="card-priority">
+                <i
+                  [className]="
+                    card.priority === 'blocker'
+                      ? 'glyphicon glyphicon-ban-circle'
+                      : card.priority === 'major'
+                      ? 'glyphicon glyphicon-arrow-up'
+                      : 'glyphicon glyphicon-arrow-down'
+                  "
+                ></i>
+                {{ card.priority }}
+              </div>
+            </div>
+            <div class="card-title">{{ card.title }}</div>
+            <div class="card-assignedTo">
+              Assigned to: {{ card.assignedTo }}
+            </div>
+          </div>
           <div class="btn-toolbar" role="toolbar">
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeDone(i)"
+              (click)="removeToDo(i)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -167,7 +221,7 @@
               (click)="
                 openDialogEdit(
                   card.title,
-                  card.points,
+                  card.priority,
                   card.assignedTo,
                   card.type,
                   i,
@@ -204,16 +258,32 @@
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
-          ID: {{ card.id }} <br />
-          Title: {{ card.title }} <br />
-          Story points: {{ card.points }} <br />
-          Assinged to: {{ card.assignedTo }} <br />
-          Type: {{ card.type }}
+          <div class="card-text-group">
+            <div class="card-id">
+              {{ card.id }}
+              <div class="card-priority">
+                <i
+                  [className]="
+                    card.priority === 'blocker'
+                      ? 'glyphicon glyphicon-ban-circle'
+                      : card.priority === 'major'
+                      ? 'glyphicon glyphicon-arrow-up'
+                      : 'glyphicon glyphicon-arrow-down'
+                  "
+                ></i>
+                {{ card.priority }}
+              </div>
+            </div>
+            <div class="card-title">{{ card.title }}</div>
+            <div class="card-assignedTo">
+              Assigned to: {{ card.assignedTo }}
+            </div>
+          </div>
           <div class="btn-toolbar" role="toolbar">
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeAccepted(i)"
+              (click)="removeToDo(i)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -223,7 +293,7 @@
               (click)="
                 openDialogEdit(
                   card.title,
-                  card.points,
+                  card.priority,
                   card.assignedTo,
                   card.type,
                   i,

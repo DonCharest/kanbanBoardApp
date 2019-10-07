@@ -1,17 +1,51 @@
 .kanban-board {
   text-align: center;
 }
+.card-text-group {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
-.hr-main {
-  border: 0;
-  border-top: 3px double white;
-  /* border-top: 3px double #8c8c8c; */
+.glyphicon-ban-circle {
+  color: red;
+}
+.glyphicon-arrow-up {
+  color: red;
+}
+.glyphicon-arrow-down {
+  color: green;
+}
+
+.card-id {
+  width: 220px;
+  color: rgb(33, 75, 214);
+  font-size: 12px;
+  /* font-family: monospace; */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.card-title {
+  font-size: 16px;
+  width: 200px;
+  /* height: 30px; */
+  /* font-family: Arial; */
+  margin-bottom: 30px;
+}
+
+.card-assignedTo {
+  font-size: 12px;
+  margin-bottom: 0px;
+  color: rgb(26, 24, 24);
+}
+
+.bottom-row {
+  display: inline-block;
 }
 
 .card-container {
-  width: 400px;
+  width: 350px;
   max-width: 100%;
-  margin: 0 25px 25px 0;
+  margin: 50px 25px 25px 0;
   display: inline-block;
   vertical-align: top;
   padding-left: 20px;
@@ -20,20 +54,20 @@
 .card-list {
   min-height: 500px;
   background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
+  /* border-radius: 4px; */
+  /* overflow: hidden; */
+  /* display: block; */
 }
 
 .card-box,
 .card-issue,
 .card-task {
+  min-height: 140px;
+  max-height: 100%;
   padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
-  /* flex-direction: row; */
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
@@ -43,43 +77,43 @@
   text-align: left;
 }
 .card-box {
-  background-color: rgb(235, 232, 232);
+  /* background-color: rgb(235, 232, 232); */
+  border: 2px solid grey;
 }
 .card-issue {
-  background-color: rgb(247, 178, 178);
+  /* background-color: rgb(247, 178, 178); */
+  border: 2px solid red;
 }
 .card-task {
-  background-color: rgb(198, 219, 226);
+  /* background-color: rgb(198, 219, 226); */
+  border: 2px solid blue;
 }
 
-.card-custom-color {
-  background-color: rgb(246, 246, 208);
+.card-yellow {
+  background-color: yellow;
 }
 
 .cdk-drag-preview {
   box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+
+  box-shadow: 0 10px 10px -6px rgba(0, 0, 0, 0.2),
+    0 16px 20px 2px rgba(0, 100, 0, 0.14), 0 6px 28px 4px rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.card-box:last-child {
-  border: none;
-}
-
-.example-list.cdk-drop-list-dragging .card-box:not(.cdk-drag-placeholder) {
+.card-list.cdk-drop-list-dragging .card-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 .card-custom-placeholder {
-  background: #ccc;
+  /* background: #ccc; */
   border: dotted 3px #999;
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  min-height: 105px;
+  min-height: 140px;
   margin-bottom: 15px;
   border-radius: 8px;
 }
@@ -93,6 +127,7 @@
   line-height: 1.428571429;
   border-radius: 15px;
 }
+
 .btn-circle.btn-lg {
   width: 50px;
   height: 50px;
@@ -101,6 +136,7 @@
   line-height: 1.33;
   border-radius: 25px;
 }
+
 .btn-circle.btn-xl {
   width: 70px;
   height: 70px;
@@ -109,21 +145,6 @@
   line-height: 1.33;
   border-radius: 35px;
 }
-
-input {
-  display: block;
-  background-color: rgb(246, 246, 208);
-}
-
-/* .drag-handle {
-  position: relative;
-  top: -32px;
-  right: -331px;
-  color: #ccc;
-  cursor: move;
-  width: 24px;
-  height: 24px;
-} */
 
 cdk-virtual-scroll-viewport {
   height: 75vh;
