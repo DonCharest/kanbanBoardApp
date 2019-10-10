@@ -89,8 +89,20 @@
   border: 2px solid blue;
 }
 
+.card-blue {
+  background-color: #a9def9;
+}
+.card-green {
+  background-color: #d3f8e2;
+}
 .card-yellow {
-  background-color: yellow;
+  background-color: #ede7b1;
+}
+.card-purple {
+  background-color: #e4c1f9;
+}
+.card-pink {
+  background-color: #f694c1;
 }
 
 .cdk-drag-preview {

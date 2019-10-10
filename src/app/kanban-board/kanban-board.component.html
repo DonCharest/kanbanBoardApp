@@ -18,28 +18,27 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div
-          [className]="
+          [ngClass]="[
             card.type === 'issue'
               ? 'card-issue'
               : card.type === 'task'
               ? 'card-task'
-              : 'card-box'
-          "
+              : 'card-box',
+            card.color === 'blue'
+              ? 'card-blue'
+              : card.color === 'yellow'
+              ? 'card-yellow'
+              : card.color === 'green'
+              ? 'card-green'
+              : card.color === 'purple'
+              ? 'card-purple'
+              : card.color === 'pink'
+              ? 'card-pink'
+              : 'card-default'
+          ]"
           *ngFor="let card of todo; let i = index"
           cdkDrag
         >
-          <!-- <div
-            id="color-div"
-            [className]="
-              card.color === 'blue'
-                ? 'card-blue'
-                : card.color === 'yellow'
-                ? 'card-yellow'
-                : 'card-default'
-            "
-          >
-            {{ card.color }}
-          </div> -->
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
           <div class="card-text-group">
             <div class="card-id">
@@ -103,13 +102,24 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div
-          [className]="
+          [ngClass]="[
             card.type === 'issue'
               ? 'card-issue'
               : card.type === 'task'
               ? 'card-task'
-              : 'card-box'
-          "
+              : 'card-box',
+            card.color === 'blue'
+              ? 'card-blue'
+              : card.color === 'yellow'
+              ? 'card-yellow'
+              : card.color === 'green'
+              ? 'card-green'
+              : card.color === 'purple'
+              ? 'card-purple'
+              : card.color === 'pink'
+              ? 'card-pink'
+              : 'card-default'
+          ]"
           *ngFor="let card of wip; let i = index"
           cdkDrag
         >
@@ -175,13 +185,24 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div
-          [className]="
+          [ngClass]="[
             card.type === 'issue'
               ? 'card-issue'
               : card.type === 'task'
               ? 'card-task'
-              : 'card-box'
-          "
+              : 'card-box',
+            card.color === 'blue'
+              ? 'card-blue'
+              : card.color === 'yellow'
+              ? 'card-yellow'
+              : card.color === 'green'
+              ? 'card-green'
+              : card.color === 'purple'
+              ? 'card-purple'
+              : card.color === 'pink'
+              ? 'card-pink'
+              : 'card-default'
+          ]"
           *ngFor="let card of done; let i = index"
           cdkDrag
         >
@@ -247,13 +268,24 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div
-          [className]="
+          [ngClass]="[
             card.type === 'issue'
               ? 'card-issue'
               : card.type === 'task'
               ? 'card-task'
-              : 'card-box'
-          "
+              : 'card-box',
+            card.color === 'blue'
+              ? 'card-blue'
+              : card.color === 'yellow'
+              ? 'card-yellow'
+              : card.color === 'green'
+              ? 'card-green'
+              : card.color === 'purple'
+              ? 'card-purple'
+              : card.color === 'pink'
+              ? 'card-pink'
+              : 'card-default'
+          ]"
           *ngFor="let card of accepted; let i = index"
           cdkDrag
         >
