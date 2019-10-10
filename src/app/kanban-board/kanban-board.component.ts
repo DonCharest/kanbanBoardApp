@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../modal/modal.component';
-// import { ModalEditComponent } from '../modal-edit/modal-edit.component';
 
 import {
   CdkDragDrop,
