@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>Edit Card</h1>
+<!-- <h1 *ngIf="!data.id" mat-dialog-title>New Card</h1>
+<h1 *ngIf="data.id" mat-dialog-title>Edit Card</h1>
 
 <div class="content" mat-dialog-content>
   <mat-form-field>
@@ -9,7 +10,7 @@
       autocomplete="off"
       [(ngModel)]="data.title"
       required
-      rows="5"
+      rows="3"
     ></textarea>
   </mat-form-field>
 
@@ -51,6 +52,17 @@
   </mat-form-field>
 </div>
 
+<mat-form-field>
+  <textarea
+    matInput
+    placeholder="Comments"
+    maxlength="600"
+    autocomplete="off"
+    [(ngModel)]="data.comments"
+    rows="3"
+  ></textarea>
+</mat-form-field>
+
 <div mat-dialog-actions>
   <button mat-button-lg class="btn btn-basic" (click)="onNoClick()">
     Exit
@@ -64,4 +76,4 @@
   >
     Save
   </button>
-</div>
+</div> -->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../modal/modal.component';
-import { ModalEditComponent } from '../modal-edit/modal-edit.component';
+// import { ModalEditComponent } from '../modal-edit/modal-edit.component';
 
 import {
   CdkDragDrop,
@@ -19,16 +19,16 @@ export class KanbanBoardComponent implements OnInit {
   wip: any[];
   review: any[];
   accepted: any[];
+
   title: string;
-  // points: number;
   priority: string;
   assignedTo: string;
   type: string;
-  id: string;
   color: string;
-  count: number;
+  comments: string;
 
-  // items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
+  id: string;
+  count: number;
 
   constructor(public dialog: MatDialog) {
     this.count = 1;
@@ -40,7 +40,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'minor',
         assignedTo: 'Jen Hayes',
         type: 'story',
-        color: 'default'
+        color: 'default',
+        comments: 'Waiting on information'
       },
       {
         id: 'TEST-10002',
@@ -49,7 +50,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'blocker',
         assignedTo: 'Joe Johnson',
         type: 'issue',
-        color: 'default'
+        color: 'default',
+        comments: ''
       },
       {
         id: 'TEST-10003',
@@ -58,7 +60,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'major',
         assignedTo: 'Steve Price',
         type: 'story',
-        color: 'default'
+        color: 'default',
+        comments: ''
       },
       {
         id: 'TEST-10004',
@@ -67,7 +70,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'major',
         assignedTo: 'Jeff Goldman',
         type: 'task',
-        color: 'default'
+        color: 'default',
+        comments: ''
       }
     ];
 
@@ -81,7 +85,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'minor',
         assignedTo: 'Gary Goulet',
         type: 'story',
-        color: 'default'
+        color: 'default',
+        comments: ''
       },
       {
         id: 'TEST-10006',
@@ -89,7 +94,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'major',
         assignedTo: 'you',
         type: 'task',
-        color: 'default'
+        color: 'default',
+        comments: ''
       },
       {
         id: 'TEST-10007',
@@ -97,7 +103,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'major',
         assignedTo: 'you',
         type: 'story',
-        color: 'default'
+        color: 'default',
+        comments: ''
       },
       {
         id: 'TEST-10008',
@@ -105,7 +112,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'blocker',
         assignedTo: 'me',
         type: 'issue',
-        color: 'default'
+        color: 'default',
+        comments: ''
       },
       {
         id: 'TEST-10009',
@@ -113,14 +121,15 @@ export class KanbanBoardComponent implements OnInit {
         priority: 'minor',
         assignedTo: 'her',
         type: 'story',
-        color: 'default'
+        color: 'default',
+        comments: ''
       }
     ];
 
     this.accepted = [];
   }
 
-  /* Modal to edit cards */
+  /* Modal props to edit cards */
   public openDialogEdit(
     title: string,
     priority: string,
@@ -128,10 +137,11 @@ export class KanbanBoardComponent implements OnInit {
     type: string,
     index: number,
     id: string,
-    color: string
+    color: string,
+    comments: string
   ): void {
-    const dialogRefEdit = this.dialog.open(ModalEditComponent, {
-      width: '350px',
+    const dialogRef = this.dialog.open(ModalComponent, {
+      width: '450px',
       data: {
         title,
         priority,
@@ -139,18 +149,20 @@ export class KanbanBoardComponent implements OnInit {
         type,
         index,
         id,
-        color
+        color,
+        comments
       }
     });
     console.log('id: ' + id);
-    dialogRefEdit.afterClosed().subscribe(data => {
+    dialogRef.afterClosed().subscribe(data => {
       const obj = {
         id: data.id,
         title: data.title,
         priority: data.priority,
         assignedTo: data.assignedTo,
         type: data.type,
-        color: data.color
+        color: data.color,
+        comments: data.comments
       };
 
       if (this.todo.some(data => data.id === id)) {
@@ -165,13 +177,13 @@ export class KanbanBoardComponent implements OnInit {
     });
   }
 
-  /* Modal to create new cards */
+  /* Modal props to create new cards */
   public openDialog(): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
-      width: '350px',
+    const dialog = this.dialog.open(ModalComponent, {
+      width: '450px',
       data: {}
     });
-    dialogRef.afterClosed().subscribe(data => {
+    dialog.afterClosed().subscribe(data => {
       // console.log('going to push now!');
       this.todo.push({
         id: 'PROJ-0000' + this.count,
@@ -179,7 +191,8 @@ export class KanbanBoardComponent implements OnInit {
         priority: data.priority,
         assignedTo: data.assignedTo,
         type: data.type,
-        color: data.color
+        color: data.color,
+        comments: data.comments
       });
       this.count++;
     });

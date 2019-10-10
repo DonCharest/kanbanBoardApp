@@ -13,17 +13,12 @@ import {
   MatButtonModule,
   MatInputModule,
   MatSelectModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatToolbarModule
 } from '@angular/material';
-import { ModalEditComponent } from './modal-edit/modal-edit.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    KanbanBoardComponent,
-    ModalComponent,
-    ModalEditComponent
-  ],
+  declarations: [AppComponent, KanbanBoardComponent, ModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,10 +30,11 @@ import { ModalEditComponent } from './modal-edit/modal-edit.component';
     MatInputModule,
     MatSelectModule,
     ScrollingModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent, ModalEditComponent]
+  entryComponents: [ModalComponent]
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
 .kanban-board {
   text-align: center;
+  margin-top: -25px;
 }
 .card-text-group {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,

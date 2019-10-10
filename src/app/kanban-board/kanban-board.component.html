@@ -3,8 +3,8 @@
     <h2>
       <button
         type="button"
-        class="btn btn-success btn-circle"
-        (click)="openDialog()"
+        class="btn btn-success btn-circle newCard"
+        (click)="openDialog((cardNew = true))"
       >
         <i class="glyphicon glyphicon-plus"></i>
       </button>
@@ -80,7 +80,8 @@
                   card.type,
                   i,
                   card.id,
-                  card.color
+                  card.color,
+                  card.comments
                 )
               "
             >
@@ -163,7 +164,9 @@
                   card.assignedTo,
                   card.type,
                   i,
-                  card.id
+                  card.id,
+                  card.color,
+                  card.comments
                 )
               "
             >
@@ -246,7 +249,9 @@
                   card.assignedTo,
                   card.type,
                   i,
-                  card.id
+                  card.id,
+                  card.color,
+                  card.comments
                 )
               "
             >
@@ -329,7 +334,9 @@
                   card.assignedTo,
                   card.type,
                   i,
-                  card.id
+                  card.id,
+                  card.color,
+                  card.comments
                 )
               "
             >
