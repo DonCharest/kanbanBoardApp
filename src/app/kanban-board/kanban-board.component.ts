@@ -17,7 +17,7 @@ import {
 export class KanbanBoardComponent implements OnInit {
   todo: any[];
   wip: any[];
-  done: any[];
+  review: any[];
   accepted: any[];
   title: string;
   // points: number;
@@ -73,7 +73,7 @@ export class KanbanBoardComponent implements OnInit {
 
     this.wip = [];
 
-    this.done = [
+    this.review = [
       {
         id: 'TEST-10005',
         title:
@@ -157,8 +157,8 @@ export class KanbanBoardComponent implements OnInit {
         this.todo.splice(index, 1, obj);
       } else if (this.wip.some(data => data.id === id)) {
         this.wip.splice(index, 1, obj);
-      } else if (this.done.some(data => data.id === id)) {
-        this.done.splice(index, 1, obj);
+      } else if (this.review.some(data => data.id === id)) {
+        this.review.splice(index, 1, obj);
       } else if (this.accepted.some(data => data.id === id)) {
         this.accepted.splice(index, 1, obj);
       }
@@ -211,8 +211,8 @@ export class KanbanBoardComponent implements OnInit {
   public removeWiP(index: number) {
     this.wip.splice(index, 1);
   }
-  public removeDone(index: number) {
-    this.done.splice(index, 1);
+  public removeReview(index: number) {
+    this.review.splice(index, 1);
   }
   public removeAccepted(index: number) {
     this.accepted.splice(index, 1);

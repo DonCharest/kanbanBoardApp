@@ -149,7 +149,7 @@
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeToDo(i)"
+              (click)="removeWiP(i)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -176,11 +176,11 @@
   </div>
 
   <div class="card-container">
-    <h2>Done</h2>
+    <h2>In Review</h2>
     <cdk-virtual-scroll-viewport itemSize="90">
       <div
         cdkDropList
-        [cdkDropListData]="done"
+        [cdkDropListData]="review"
         class="card-list"
         (cdkDropListDropped)="drop($event)"
       >
@@ -203,7 +203,7 @@
               ? 'card-pink'
               : 'card-default'
           ]"
-          *ngFor="let card of done; let i = index"
+          *ngFor="let card of review; let i = index"
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
@@ -232,7 +232,7 @@
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeToDo(i)"
+              (click)="removeReview(i)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -315,7 +315,7 @@
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeToDo(i)"
+              (click)="removeAccepted(i)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
