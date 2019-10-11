@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ModalComponent } from '../modal/modal.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 import {
   CdkDragDrop,
@@ -27,105 +28,41 @@ export class KanbanBoardComponent implements OnInit {
   comments: string;
 
   id: string;
-  count: number;
+  count: any;
 
   constructor(public dialog: MatDialog) {
-    this.count = 1;
+    // Set counter from LS - if available
+    this.count = localStorage.getItem('count');
+    // Otherwise start at 1
+    if (this.count === null) {
+      this.count = 1;
+    }
 
-    this.todo = [
-      {
-        id: 'TEST-10001',
-        title: 'As a <type of user>, I want <some goal> so that <some reason>.',
-        priority: 'minor',
-        assignedTo: 'Jen Hayes',
-        type: 'story',
-        color: 'default',
-        comments: 'Waiting on information'
-      },
-      {
-        id: 'TEST-10002',
-        title:
-          'As a power user, I can specify files or folders to backup based on file size, date created and date modified.',
-        priority: 'blocker',
-        assignedTo: 'Joe Johnson',
-        type: 'issue',
-        color: 'default',
-        comments: ''
-      },
-      {
-        id: 'TEST-10003',
-        title:
-          'As a user, I can indicate folders not to backup so that my backup drive isn\'t filled up with things I don\'t need saved.',
-        priority: 'major',
-        assignedTo: 'Steve Price',
-        type: 'story',
-        color: 'default',
-        comments: ''
-      },
-      {
-        id: 'TEST-10004',
-        title:
-          'As an Acquisition Gateway User, I need to select an Auction product in the Acquisition ordering platform so that I can bid on it.',
-        priority: 'major',
-        assignedTo: 'Jeff Goldman',
-        type: 'task',
-        color: 'default',
-        comments: ''
-      }
-    ];
-
+    this.todo = [];
     this.wip = [];
-
-    this.review = [
-      {
-        id: 'TEST-10005',
-        title:
-          'As a Content Owner, I want to be able to create product content so that I can provide information and market to customers.',
-        priority: 'minor',
-        assignedTo: 'Gary Goulet',
-        type: 'story',
-        color: 'default',
-        comments: ''
-      },
-      {
-        id: 'TEST-10006',
-        title: 'Brush teeth',
-        priority: 'major',
-        assignedTo: 'you',
-        type: 'task',
-        color: 'default',
-        comments: ''
-      },
-      {
-        id: 'TEST-10007',
-        title: 'Take a shower',
-        priority: 'major',
-        assignedTo: 'you',
-        type: 'story',
-        color: 'default',
-        comments: ''
-      },
-      {
-        id: 'TEST-10008',
-        title: 'Check e-mail',
-        priority: 'blocker',
-        assignedTo: 'me',
-        type: 'issue',
-        color: 'default',
-        comments: ''
-      },
-      {
-        id: 'TEST-10009',
-        title: 'Walk dog',
-        priority: 'minor',
-        assignedTo: 'her',
-        type: 'story',
-        color: 'default',
-        comments: ''
-      }
-    ];
-
+    this.review = [];
     this.accepted = [];
+  }
+
+  // function to calculate and update the index of the card after being moved in current array,
+  // or droped into a new array
+  public drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      this.saveToLocal();
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      this.saveToLocal();
+    }
   }
 
   /* Modal props to edit cards */
@@ -166,12 +103,16 @@ export class KanbanBoardComponent implements OnInit {
 
       if (this.todo.some(data => data.id === id)) {
         this.todo.splice(index, 1, obj);
+        this.saveToLocal();
       } else if (this.wip.some(data => data.id === id)) {
         this.wip.splice(index, 1, obj);
+        this.saveToLocal();
       } else if (this.review.some(data => data.id === id)) {
         this.review.splice(index, 1, obj);
+        this.saveToLocal();
       } else if (this.accepted.some(data => data.id === id)) {
         this.accepted.splice(index, 1, obj);
+        this.saveToLocal();
       }
     });
   }
@@ -182,8 +123,8 @@ export class KanbanBoardComponent implements OnInit {
       width: '450px',
       data: {}
     });
+
     dialog.afterClosed().subscribe(data => {
-      // console.log('going to push now!');
       this.todo.push({
         id: 'PROJ-0000' + this.count,
         title: data.title,
@@ -193,42 +134,85 @@ export class KanbanBoardComponent implements OnInit {
         color: data.color,
         comments: data.comments
       });
+
       this.count++;
+      this.saveToLocal();
     });
   }
 
-  // function to calculate and update the index of the card after being moved in current array,
-  // or droped into a new array
-  public drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+  /* Confirm Delete Dialog */
+  public openDialogConfirm(i: number, id: string): void {
+    const dialog = this.dialog.open(ConfirmationDialogComponent, {
+      width: '450px',
+      data: {
+        message: `Are you sure you want to delete ${id}?`,
+        buttonText: {
+          ok: 'Yes',
+          cancel: 'No'
+        }
+      }
+    });
+    dialog.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        if (this.todo.some(data => data.id === id)) {
+          this.removeToDo(i);
+        }
+        if (this.wip.some(data => data.id === id)) {
+          this.removeWiP(i);
+        }
+        if (this.review.some(data => data.id === id)) {
+          this.removeReview(i);
+        } else {
+          this.removeAccepted(i);
+        }
+        const a = document.createElement('a');
+        a.click();
+        a.remove();
+      }
+    });
   }
 
   // methods to remove cards
   public removeToDo(index: number) {
     this.todo.splice(index, 1);
+    this.saveToLocal();
   }
   public removeWiP(index: number) {
     this.wip.splice(index, 1);
+    this.saveToLocal();
   }
   public removeReview(index: number) {
     this.review.splice(index, 1);
+    this.saveToLocal();
   }
   public removeAccepted(index: number) {
     this.accepted.splice(index, 1);
+    this.saveToLocal();
   }
 
-  ngOnInit() {}
+  public saveToLocal() {
+    localStorage.setItem('todo', JSON.stringify(this.todo));
+    localStorage.setItem('wip', JSON.stringify(this.wip));
+    localStorage.setItem('review', JSON.stringify(this.review));
+    localStorage.setItem('accepted', JSON.stringify(this.accepted));
+    localStorage.setItem('count', this.count);
+  }
+
+  public loadFromLocal() {
+    const loadTodo = localStorage.getItem('todo');
+    this.todo = JSON.parse(loadTodo);
+
+    const loadWip = localStorage.getItem('wip');
+    this.wip = JSON.parse(loadWip);
+
+    const loadReview = localStorage.getItem('review');
+    this.review = JSON.parse(loadReview);
+
+    const loadAccepted = localStorage.getItem('accepted');
+    this.accepted = JSON.parse(loadAccepted);
+  }
+
+  ngOnInit() {
+    this.loadFromLocal();
+  }
 }

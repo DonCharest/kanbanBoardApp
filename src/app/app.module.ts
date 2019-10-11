@@ -8,6 +8,8 @@ import { ModalComponent } from './modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import {
   MatDialogModule,
   MatButtonModule,
@@ -16,9 +18,15 @@ import {
   MatFormFieldModule,
   MatToolbarModule
 } from '@angular/material';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, KanbanBoardComponent, ModalComponent],
+  declarations: [
+    AppComponent,
+    KanbanBoardComponent,
+    ModalComponent,
+    ConfirmationDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,10 +39,12 @@ import {
     MatSelectModule,
     ScrollingModule,
     MatFormFieldModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent]
+  entryComponents: [ModalComponent, ConfirmationDialogComponent]
 })
 export class AppModule {}

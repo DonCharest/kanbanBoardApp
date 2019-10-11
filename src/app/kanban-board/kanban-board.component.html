@@ -1,4 +1,37 @@
 <div class="kanban-board" cdkDropListGroup>
+  <mat-toolbar color="" style="height: 30px">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+      <!-- Options: -->
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="project">
+        Project
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="members">
+        Members
+      </button>
+    </mat-menu>
+
+    <mat-menu #project="matMenu">
+      <button mat-menu-item>New</button>
+      <button mat-menu-item [matMenuTriggerFor]="open">Open</button>
+      <button mat-menu-item>Close</button>
+    </mat-menu>
+
+    <mat-menu #open="matMenu">
+      <button mat-menu-item *ngFor="let card of todo">
+        {{ card.id }}
+      </button>
+    </mat-menu>
+
+    <mat-menu #members="matMenu">
+      <button mat-menu-item>Add</button>
+      <button mat-menu-item>Remove</button>
+    </mat-menu>
+  </mat-toolbar>
+
   <div class="card-container">
     <h2>
       <button
@@ -41,6 +74,7 @@
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
           <div class="card-text-group">
+            <ng-container></ng-container>
             <div class="card-id">
               {{ card.id }}
               <div class="card-priority">
@@ -65,7 +99,7 @@
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeToDo(i)"
+              (click)="openDialogConfirm(i, card.id)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -150,7 +184,7 @@
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeWiP(i)"
+              (click)="openDialogConfirm(i, card.id)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -235,7 +269,7 @@
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeReview(i)"
+              (click)="openDialogConfirm(i, card.id)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
@@ -320,7 +354,7 @@
             <button
               type="button"
               class="btn btn-danger btn-circle"
-              (click)="removeAccepted(i)"
+              (click)="openDialogConfirm(i, card.id)"
             >
               <i class="glyphicon glyphicon-remove"></i>
             </button>
