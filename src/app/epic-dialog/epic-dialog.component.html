@@ -1,1 +1,33 @@
-<p>epic-dialog works!</p>
+<h1 mat-dialog-title>New Epic</h1>
+
+<div class="content" mat-dialog-content>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Name"
+      autocomplete="off"
+      [(ngModel)]="data.epicName"
+      required
+    />
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    mat-raised-button
+    mat-dialog-close
+    tabindex="-1"
+    (click)="onNoClick()"
+  >
+    Exit
+  </button>
+  &nbsp;&nbsp;
+  <button
+    mat-raised-button
+    color="primary"
+    [(mat-dialog-close)]="data"
+    tabindex="1"
+  >
+    Save
+  </button>
+</div>

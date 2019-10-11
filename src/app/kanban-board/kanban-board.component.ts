@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { AddEditCardDialogComponent } from '../add-edit-card-dialog/add-edit-card-dialog.component';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MemberDialogComponent } from '../member-dialog/member-dialog.component';
+import { EpicDialogComponent } from '../epic-dialog/epic-dialog.component';
 
 import {
   CdkDragDrop,
@@ -34,7 +35,7 @@ export class KanbanBoardComponent implements OnInit {
   members: any[];
   memberName: string;
   epics: any[];
-  epic: string;
+  epicName: string;
 
   constructor(public dialog: MatDialog) {
     // Set counter from LS - if available
@@ -149,13 +150,26 @@ export class KanbanBoardComponent implements OnInit {
     });
   }
 
+  /* Dialog to add new epic */
+  public openNewEpicDialog(): void {
+    const dialog = this.dialog.open(EpicDialogComponent, {
+      width: '450px',
+      data: {}
+    });
+    dialog.afterClosed().subscribe(data => {
+      this.epics.push({
+        epicName: data.epicName
+      });
+      this.saveToLocal();
+    });
+  }
+
   /* Dialog to add new member */
   public openNewMemberDialog(): void {
     const dialog = this.dialog.open(MemberDialogComponent, {
       width: '450px',
       data: {}
     });
-
     dialog.afterClosed().subscribe(data => {
       this.members.push({
         memberName: data.memberName
@@ -220,6 +234,7 @@ export class KanbanBoardComponent implements OnInit {
     localStorage.setItem('review', JSON.stringify(this.review));
     localStorage.setItem('accepted', JSON.stringify(this.accepted));
     localStorage.setItem('count', this.count);
+    localStorage.setItem('epics', JSON.stringify(this.epics));
     localStorage.setItem('members', JSON.stringify(this.members));
   }
 

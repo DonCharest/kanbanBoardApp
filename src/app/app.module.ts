@@ -54,7 +54,8 @@ import { EpicDialogComponent } from './epic-dialog/epic-dialog.component';
   entryComponents: [
     AddEditCardDialogComponent,
     ConfirmationDialogComponent,
-    MemberDialogComponent
+    MemberDialogComponent,
+    EpicDialogComponent
   ]
 })
 export class AppModule {}
