@@ -3,8 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  templateUrl: './add-edit-card-dialog.component.html',
+  styleUrls: ['./add-edit-card-dialog.component.css']
 })
 export class ModalComponent implements OnInit {
   constructor(

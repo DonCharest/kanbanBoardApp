@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalComponent } from '../add-edit-card-dialog/add-edit-card-dialog.component';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 import {
@@ -29,6 +29,9 @@ export class KanbanBoardComponent implements OnInit {
 
   id: string;
   count: any;
+
+  members: any[];
+  epics: any[];
 
   constructor(public dialog: MatDialog) {
     // Set counter from LS - if available

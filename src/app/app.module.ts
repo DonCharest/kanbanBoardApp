@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './add-edit-card-dialog/add-edit-card-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -19,13 +19,17 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { MemberDialogComponent } from './member-dialog/member-dialog.component';
+import { EpicDialogComponent } from './epic-dialog/epic-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KanbanBoardComponent,
     ModalComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    MemberDialogComponent,
+    EpicDialogComponent
   ],
   imports: [
     BrowserModule,

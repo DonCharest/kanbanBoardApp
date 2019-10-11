@@ -2,33 +2,29 @@
   <mat-toolbar color="" style="height: 30px">
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
-      <!-- Options: -->
     </button>
 
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="project">
-        Project
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="members">
-        Members
-      </button>
+      <button mat-menu-item [matMenuTriggerFor]="epics">Epics</button>
+      <button mat-menu-item [matMenuTriggerFor]="members">Members</button>
     </mat-menu>
 
-    <mat-menu #project="matMenu">
+    <mat-menu #epics="matMenu">
       <button mat-menu-item>New</button>
-      <button mat-menu-item [matMenuTriggerFor]="open">Open</button>
-      <button mat-menu-item>Close</button>
-    </mat-menu>
-
-    <mat-menu #open="matMenu">
-      <button mat-menu-item *ngFor="let card of todo">
-        {{ card.id }}
-      </button>
+      <button mat-menu-item [matMenuTriggerFor]="viewEpics">View</button>
     </mat-menu>
 
     <mat-menu #members="matMenu">
-      <button mat-menu-item>Add</button>
-      <button mat-menu-item>Remove</button>
+      <button mat-menu-item>New</button>
+      <button mat-menu-item [matMenuTriggerFor]="viewMembers">View</button>
+    </mat-menu>
+
+    <mat-menu #viewEpics="matMenu">
+      <button mat-menu-item *ngFor="let card of todo">{{ card.id }}</button>
+    </mat-menu>
+
+    <mat-menu #viewMembers="matMenu">
+      <button mat-menu-item *ngFor="let card of todo">{{ card.id }}</button>
     </mat-menu>
   </mat-toolbar>
 
