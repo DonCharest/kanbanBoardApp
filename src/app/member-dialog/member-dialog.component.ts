@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-member-dialog',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./member-dialog.component.css']
 })
 export class MemberDialogComponent implements OnInit {
+  constructor(
+    public dialogRef: MatDialogRef<MemberDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
+  ngOnInit() {}
 }

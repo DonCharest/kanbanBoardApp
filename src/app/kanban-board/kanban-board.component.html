@@ -6,7 +6,7 @@
 
     <mat-menu #menu="matMenu">
       <button mat-menu-item [matMenuTriggerFor]="epics">Epics</button>
-      <button mat-menu-item [matMenuTriggerFor]="members">Members</button>
+      <button mat-menu-item [matMenuTriggerFor]="membersList">Members</button>
     </mat-menu>
 
     <mat-menu #epics="matMenu">
@@ -14,8 +14,8 @@
       <button mat-menu-item [matMenuTriggerFor]="viewEpics">View</button>
     </mat-menu>
 
-    <mat-menu #members="matMenu">
-      <button mat-menu-item>New</button>
+    <mat-menu #membersList="matMenu">
+      <button mat-menu-item (click)="openNewMemberDialog()">New</button>
       <button mat-menu-item [matMenuTriggerFor]="viewMembers">View</button>
     </mat-menu>
 
@@ -24,7 +24,9 @@
     </mat-menu>
 
     <mat-menu #viewMembers="matMenu">
-      <button mat-menu-item *ngFor="let card of todo">{{ card.id }}</button>
+      <button mat-menu-item *ngFor="let member of members">
+        {{ member.memberName }}
+      </button>
     </mat-menu>
   </mat-toolbar>
 
@@ -33,7 +35,7 @@
       <button
         type="button"
         class="btn btn-success btn-circle newCard"
-        (click)="openDialog((cardNew = true))"
+        (click)="openDialog()"
       >
         <i class="glyphicon glyphicon-plus"></i>
       </button>

@@ -6,9 +6,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './add-edit-card-dialog.component.html',
   styleUrls: ['./add-edit-card-dialog.component.css']
 })
-export class ModalComponent implements OnInit {
+export class AddEditCardDialogComponent implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<ModalComponent>,
+    public dialogRef: MatDialogRef<AddEditCardDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 

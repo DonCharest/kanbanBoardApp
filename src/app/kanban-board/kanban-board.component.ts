@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ModalComponent } from '../add-edit-card-dialog/add-edit-card-dialog.component';
+import { AddEditCardDialogComponent } from '../add-edit-card-dialog/add-edit-card-dialog.component';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { MemberDialogComponent } from '../member-dialog/member-dialog.component';
 
 import {
   CdkDragDrop,
@@ -31,7 +32,9 @@ export class KanbanBoardComponent implements OnInit {
   count: any;
 
   members: any[];
+  memberName: string;
   epics: any[];
+  epic: string;
 
   constructor(public dialog: MatDialog) {
     // Set counter from LS - if available
@@ -45,6 +48,9 @@ export class KanbanBoardComponent implements OnInit {
     this.wip = [];
     this.review = [];
     this.accepted = [];
+
+    this.epics = [];
+    this.members = [];
   }
 
   // function to calculate and update the index of the card after being moved in current array,
@@ -79,7 +85,7 @@ export class KanbanBoardComponent implements OnInit {
     color: string,
     comments: string
   ): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
+    const dialogRef = this.dialog.open(AddEditCardDialogComponent, {
       width: '450px',
       data: {
         title,
@@ -122,7 +128,7 @@ export class KanbanBoardComponent implements OnInit {
 
   /* Modal props to create new cards */
   public openDialog(): void {
-    const dialog = this.dialog.open(ModalComponent, {
+    const dialog = this.dialog.open(AddEditCardDialogComponent, {
       width: '450px',
       data: {}
     });
@@ -139,6 +145,21 @@ export class KanbanBoardComponent implements OnInit {
       });
 
       this.count++;
+      this.saveToLocal();
+    });
+  }
+
+  /* Dialog to add new member */
+  public openNewMemberDialog(): void {
+    const dialog = this.dialog.open(MemberDialogComponent, {
+      width: '450px',
+      data: {}
+    });
+
+    dialog.afterClosed().subscribe(data => {
+      this.members.push({
+        memberName: data.memberName
+      });
       this.saveToLocal();
     });
   }
@@ -199,20 +220,34 @@ export class KanbanBoardComponent implements OnInit {
     localStorage.setItem('review', JSON.stringify(this.review));
     localStorage.setItem('accepted', JSON.stringify(this.accepted));
     localStorage.setItem('count', this.count);
+    localStorage.setItem('members', JSON.stringify(this.members));
   }
 
   public loadFromLocal() {
     const loadTodo = localStorage.getItem('todo');
-    this.todo = JSON.parse(loadTodo);
+    if (loadTodo != null) {
+      this.todo = JSON.parse(loadTodo);
+    }
 
     const loadWip = localStorage.getItem('wip');
-    this.wip = JSON.parse(loadWip);
+    if (loadWip != null) {
+      this.wip = JSON.parse(loadWip);
+    }
 
     const loadReview = localStorage.getItem('review');
-    this.review = JSON.parse(loadReview);
+    if (loadReview != null) {
+      this.review = JSON.parse(loadReview);
+    }
 
     const loadAccepted = localStorage.getItem('accepted');
-    this.accepted = JSON.parse(loadAccepted);
+    if (loadAccepted != null) {
+      this.accepted = JSON.parse(loadAccepted);
+    }
+
+    const loadMembers = localStorage.getItem('members');
+    if (loadMembers != null) {
+      this.members = JSON.parse(loadMembers);
+    }
   }
 
   ngOnInit() {

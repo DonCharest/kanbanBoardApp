@@ -64,15 +64,20 @@
 </mat-form-field>
 
 <div mat-dialog-actions>
-  <button mat-button-lg class="btn btn-basic" (click)="onNoClick()">
+  <button
+    mat-raised-button
+    mat-dialog-close
+    tabindex="-1"
+    (click)="onNoClick()"
+  >
     Exit
   </button>
   &nbsp;&nbsp;
   <button
-    mat-button-lg
-    class="btn btn-primary"
+    mat-raised-button
+    color="primary"
     [(mat-dialog-close)]="data"
-    cdkFocusInitial
+    tabindex="1"
   >
     Save
   </button>

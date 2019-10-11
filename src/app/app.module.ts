@@ -4,12 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ModalComponent } from './add-edit-card-dialog/add-edit-card-dialog.component';
+import { AddEditCardDialogComponent } from './add-edit-card-dialog/add-edit-card-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+
 import {
   MatDialogModule,
   MatButtonModule,
@@ -18,6 +19,7 @@ import {
   MatFormFieldModule,
   MatToolbarModule
 } from '@angular/material';
+
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { MemberDialogComponent } from './member-dialog/member-dialog.component';
 import { EpicDialogComponent } from './epic-dialog/epic-dialog.component';
@@ -26,7 +28,7 @@ import { EpicDialogComponent } from './epic-dialog/epic-dialog.component';
   declarations: [
     AppComponent,
     KanbanBoardComponent,
-    ModalComponent,
+    AddEditCardDialogComponent,
     ConfirmationDialogComponent,
     MemberDialogComponent,
     EpicDialogComponent
@@ -49,6 +51,10 @@ import { EpicDialogComponent } from './epic-dialog/epic-dialog.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalComponent, ConfirmationDialogComponent]
+  entryComponents: [
+    AddEditCardDialogComponent,
+    ConfirmationDialogComponent,
+    MemberDialogComponent
+  ]
 })
 export class AppModule {}

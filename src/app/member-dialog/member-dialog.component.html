@@ -1,1 +1,33 @@
-<p>member-dialog works!</p>
+<h1 mat-dialog-title>New Member</h1>
+
+<div class="content" mat-dialog-content>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Name"
+      autocomplete="off"
+      [(ngModel)]="data.memberName"
+      required
+    />
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button
+    mat-raised-button
+    mat-dialog-close
+    tabindex="-1"
+    (click)="onNoClick()"
+  >
+    Exit
+  </button>
+  &nbsp;&nbsp;
+  <button
+    mat-raised-button
+    color="primary"
+    [(mat-dialog-close)]="data"
+    tabindex="1"
+  >
+    Save
+  </button>
+</div>
