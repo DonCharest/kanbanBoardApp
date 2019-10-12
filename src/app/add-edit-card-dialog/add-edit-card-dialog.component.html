@@ -51,7 +51,7 @@
 </div>
 
 <mat-form-field>
-  <mat-select placeholder="Epic" [(ngModel)]="data.epic">
+  <mat-select placeholder="Epic" [(ngModel)]="data.epicLink">
     <mat-option *ngFor="let epic of epics" [value]="epic.title">{{
       epic.title
     }}</mat-option>

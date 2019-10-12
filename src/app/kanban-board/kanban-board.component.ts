@@ -30,6 +30,7 @@ export class KanbanBoardComponent implements OnInit {
   type: string;
   color: string;
   comments: string;
+  epicLink: string;
 
   id: string;
   count: any;
@@ -54,7 +55,6 @@ export class KanbanBoardComponent implements OnInit {
   ngOnInit() {
     this.members = this.provider.getMembers();
     this.epics = this.provider.getEpics();
-
     this.loadFromLocal();
   }
 
@@ -88,7 +88,8 @@ export class KanbanBoardComponent implements OnInit {
     index: number,
     id: string,
     color: string,
-    comments: string
+    comments: string,
+    epicLink: string
   ): void {
     const dialogRef = this.dialog.open(AddEditCardDialogComponent, {
       width: '450px',
@@ -100,7 +101,8 @@ export class KanbanBoardComponent implements OnInit {
         index,
         id,
         color,
-        comments
+        comments,
+        epicLink
       }
     });
     console.log('id: ' + id);
@@ -112,9 +114,10 @@ export class KanbanBoardComponent implements OnInit {
         assignedTo: data.assignedTo,
         type: data.type,
         color: data.color,
-        comments: data.comments
+        comments: data.comments,
+        epicLink: data.epicLink
       };
-
+      console.log('epic ' + data.epic);
       if (this.todo.some(data => data.id === id)) {
         this.todo.splice(index, 1, obj);
         this.saveToLocal();
@@ -146,7 +149,8 @@ export class KanbanBoardComponent implements OnInit {
         assignedTo: data.assignedTo,
         type: data.type,
         color: data.color,
-        comments: data.comments
+        comments: data.comments,
+        epicLink: data.epicLink
       });
 
       this.count++;
@@ -162,7 +166,6 @@ export class KanbanBoardComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(data => {
       this.epics.push({
-        // id: data.id,
         title: data.epicName
       });
       this.saveToLocal();
@@ -177,7 +180,6 @@ export class KanbanBoardComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(data => {
       this.members.push({
-        // id: data.id,
         name: data.memberName
       });
       this.saveToLocal();
@@ -272,27 +274,22 @@ export class KanbanBoardComponent implements OnInit {
     if (loadTodo != null) {
       this.todo = JSON.parse(loadTodo);
     }
-
     const loadWip = localStorage.getItem('wip');
     if (loadWip != null) {
       this.wip = JSON.parse(loadWip);
     }
-
     const loadReview = localStorage.getItem('review');
     if (loadReview != null) {
       this.review = JSON.parse(loadReview);
     }
-
     const loadAccepted = localStorage.getItem('accepted');
     if (loadAccepted != null) {
       this.accepted = JSON.parse(loadAccepted);
     }
-
     const loadMembers = localStorage.getItem('members');
     if (loadMembers != null) {
       this.members = JSON.parse(loadMembers);
     }
-
     const loadEpics = localStorage.getItem('epics');
     if (loadEpics != null) {
       this.epics = JSON.parse(loadEpics);
