@@ -122,7 +122,7 @@ export class KanbanBoardComponent implements OnInit {
         comments: data.comments,
         epicLink: data.epicLink
       };
-      console.log('epic ' + data.epic);
+
       if (this.todo.some(data => data.id === id)) {
         this.todo.splice(index, 1, obj);
         this.saveToLocal();
@@ -234,14 +234,12 @@ export class KanbanBoardComponent implements OnInit {
 
   // methods to remove members
   public removeMember(index: number) {
-    console.log('removed called, index: ' + index);
     this.members.splice(index, 1);
     this.saveToLocal();
   }
 
   // methods to remove members
   public removeEpic(index: number) {
-    console.log('removed called, index: ' + index);
     this.epics.splice(index, 1);
     this.saveToLocal();
   }
