@@ -29,7 +29,7 @@
           <i class="glyphicon glyphicon-remove"></i>
         </button>
         &nbsp;
-        {{ epic.title }}
+        {{ epic.title | titlecase }}
       </button>
     </mat-menu>
 
@@ -43,7 +43,7 @@
           <i class="glyphicon glyphicon-remove"></i>
         </button>
         &nbsp;
-        {{ member.name }}
+        {{ member.name | titlecase }}
       </button>
     </mat-menu>
   </mat-toolbar>
@@ -83,6 +83,8 @@
               ? 'card-purple'
               : card.color === 'pink'
               ? 'card-pink'
+              : card.color === 'orange'
+              ? 'card-orange'
               : 'card-default'
           ]"
           *ngFor="let card of todo; let i = index"
@@ -106,12 +108,14 @@
                 {{ card.priority }}
               </div>
             </div>
-            <div class="card-title">{{ card.title }}</div>
+            <div class="card-title">{{ card.title | titlecase }}</div>
 
-            <div class="card-epic">{{ card.epicLink }}</div>
+            <div class="card-epic">
+              {{ card.epicLink | titlecase }}
+            </div>
 
             <div class="card-assignedTo">
-              Assigned to: {{ card.assignedTo }}
+              Assigned to: {{ card.assignedTo | titlecase }}
             </div>
           </div>
           <div class="btn-toolbar" role="toolbar">
@@ -173,6 +177,8 @@
               ? 'card-purple'
               : card.color === 'pink'
               ? 'card-pink'
+              : card.color === 'orange'
+              ? 'card-orange'
               : 'card-default'
           ]"
           *ngFor="let card of wip; let i = index"
@@ -195,10 +201,10 @@
                 {{ card.priority }}
               </div>
             </div>
-            <div class="card-title">{{ card.title }}</div>
-            <div class="card-epic">{{ card.epicLink }}</div>
+            <div class="card-title">{{ card.title | titlecase }}</div>
+            <div class="card-epic">{{ card.epicLink | titlecase }}</div>
             <div class="card-assignedTo">
-              Assigned to: {{ card.assignedTo }}
+              Assigned to: {{ card.assignedTo | titlecase }}
             </div>
           </div>
           <div class="btn-toolbar" role="toolbar">
@@ -260,6 +266,8 @@
               ? 'card-purple'
               : card.color === 'pink'
               ? 'card-pink'
+              : card.color === 'orange'
+              ? 'card-orange'
               : 'card-default'
           ]"
           *ngFor="let card of review; let i = index"
@@ -282,10 +290,10 @@
                 {{ card.priority }}
               </div>
             </div>
-            <div class="card-title">{{ card.title }}</div>
-            <div class="card-epic">{{ card.epicLink }}</div>
+            <div class="card-title">{{ card.title | titlecase }}</div>
+            <div class="card-epic">{{ card.epicLink | titlecase }}</div>
             <div class="card-assignedTo">
-              Assigned to: {{ card.assignedTo }}
+              Assigned to: {{ card.assignedTo | titlecase }}
             </div>
           </div>
           <div class="btn-toolbar" role="toolbar">
@@ -347,6 +355,8 @@
               ? 'card-purple'
               : card.color === 'pink'
               ? 'card-pink'
+              : card.color === 'orange'
+              ? 'card-orange'
               : 'card-default'
           ]"
           *ngFor="let card of accepted; let i = index"
@@ -369,10 +379,10 @@
                 {{ card.priority }}
               </div>
             </div>
-            <div class="card-title">{{ card.title }}</div>
-            <div class="card-epic">{{ card.epicLink }}</div>
+            <div class="card-title">{{ card.title | titlecase }}</div>
+            <div class="card-epic">{{ card.epicLink | titlecase }}</div>
             <div class="card-assignedTo">
-              Assigned to: {{ card.assignedTo }}
+              Assigned to: {{ card.assignedTo | titlecase }}
             </div>
           </div>
           <div class="btn-toolbar" role="toolbar">

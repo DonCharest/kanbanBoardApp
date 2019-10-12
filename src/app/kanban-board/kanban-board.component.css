@@ -32,16 +32,19 @@
 }
 
 .card-assignedTo {
-  font-size: 14px;
-  margin-bottom: 0px;
+  font-size: 12px;
+  margin-top: 10px;
+  padding-bottom: 0px;
   color: rgb(26, 24, 24);
 }
 
 .card-epic {
   font-size: 14px;
+  font-weight: 550;
   margin-bottom: 5px;
   color: #00000f;
   background-color: rgb(217, 220, 226);
+  background-color: #ede7f6;
   border-radius: 18px;
   text-align: center;
   width: 215px;
@@ -99,19 +102,27 @@
   background: #ffffff;
 }
 .card-blue {
-  background-color: #a9def9;
+  /* background-color: #a9def9; */
+  background-color: #90caf9;
 }
 .card-green {
-  background-color: #d3f8e2;
+  /* background-color: #d3f8e2; */
+  background-color: #a5d6a7;
 }
 .card-yellow {
-  background-color: #ede7b1;
+  /* background-color: #ede7b1; */
+  background-color: #fff59d;
 }
 .card-purple {
-  background-color: #e4c1f9;
+  /* background-color: #e4c1f9; */
+  background-color: #ce93d8;
 }
 .card-pink {
-  background-color: #f694c1;
+  /* background-color: #f694c1; */
+  background-color: #f48fb1;
+}
+.card-orange {
+  background-color: #ffcc80;
 }
 
 .cdk-drag-preview {

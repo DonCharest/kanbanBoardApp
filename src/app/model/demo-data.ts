@@ -35,7 +35,7 @@ export const TODOS: Card[] = [
     color: 'default',
     comments: 'Work completed',
     epicLink: 'Design Data Model',
-    id: 'DEMO-000001'
+    id: 'DEMO-000002'
   }
 ];
 
@@ -48,7 +48,7 @@ export const WIPS: Card[] = [
     color: 'default',
     comments: 'Work completed',
     epicLink: 'Design Board Layout',
-    id: 'DEMO-000001'
+    id: 'DEMO-000003'
   },
   {
     title: 'Create Model files',
@@ -58,7 +58,7 @@ export const WIPS: Card[] = [
     color: 'default',
     comments: 'Work completed',
     epicLink: 'Design Data Model',
-    id: 'DEMO-000002'
+    id: 'DEMO-000004'
   }
 ];
 
@@ -71,7 +71,7 @@ export const REVIEWS: Card[] = [
     color: 'pink',
     comments: 'Work completed',
     epicLink: 'Design Board Layout',
-    id: 'DEMO-000003'
+    id: 'DEMO-000005'
   },
   {
     title: 'Create Model files',
@@ -81,7 +81,7 @@ export const REVIEWS: Card[] = [
     color: 'green',
     comments: 'Work completed',
     epicLink: 'Design Data Model',
-    id: 'DEMO-000004'
+    id: 'DEMO-000006'
   }
 ];
 
@@ -94,7 +94,7 @@ export const ACCEPTEDS: Card[] = [
     color: 'default',
     comments: 'Work completed',
     epicLink: 'Design Board Layout',
-    id: 'DEMO-000005'
+    id: 'DEMO-000007'
   },
   {
     title: 'Create Model files',
@@ -104,6 +104,6 @@ export const ACCEPTEDS: Card[] = [
     color: 'default',
     comments: 'Work completed',
     epicLink: 'Design Data Model',
-    id: 'DEMO-000006'
+    id: 'DEMO-000008'
   }
 ];
