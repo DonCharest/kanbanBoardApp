@@ -44,6 +44,9 @@ export class KanbanBoardComponent implements OnInit {
     // Otherwise start at 1
     if (this.count === null) {
       this.count = 1;
+
+      const num: number = this.count;
+      this.count = this.leftFillNum(num, 6);
     }
 
     this.todo = [];
@@ -61,6 +64,11 @@ export class KanbanBoardComponent implements OnInit {
     this.accepted = this.provider.getAccepteds();
 
     this.loadFromLocal();
+  }
+
+  // function to pad string
+  public leftFillNum(num: any, targetLength: any) {
+    return num.toString().padStart(targetLength, 0);
   }
 
   // function to calculate and update the index of the card after being moved in current array,
@@ -148,7 +156,7 @@ export class KanbanBoardComponent implements OnInit {
 
     dialog.afterClosed().subscribe(data => {
       this.todo.push({
-        id: 'PROJ-0000' + this.count,
+        id: 'PROJ-' + this.count,
         title: data.title,
         priority: data.priority,
         assignedTo: data.assignedTo,
@@ -159,6 +167,7 @@ export class KanbanBoardComponent implements OnInit {
       });
 
       this.count++;
+      this.count = this.leftFillNum(this.count, 6);
       this.saveToLocal();
     });
   }
