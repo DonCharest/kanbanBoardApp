@@ -10,13 +10,17 @@
     </mat-menu>
 
     <mat-menu #epicsList="matMenu">
-      <button mat-menu-item (click)="openNewEpicDialog()">New</button>
-      <button mat-menu-item [matMenuTriggerFor]="viewEpics">View</button>
+      <button mat-menu-item (click)="openNewEpicDialog()">Add New Epic</button>
+      <button mat-menu-item [matMenuTriggerFor]="viewEpics">View Epics</button>
     </mat-menu>
 
     <mat-menu #membersList="matMenu">
-      <button mat-menu-item (click)="openNewMemberDialog()">New</button>
-      <button mat-menu-item [matMenuTriggerFor]="viewMembers">View</button>
+      <button mat-menu-item (click)="openNewMemberDialog()">
+        Add New Member
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="viewMembers">
+        View Members
+      </button>
     </mat-menu>
 
     <mat-menu #viewEpics="matMenu">
