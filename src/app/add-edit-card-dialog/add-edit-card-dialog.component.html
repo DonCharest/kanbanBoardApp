@@ -15,7 +15,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Priority" [(value)]="data.priority" required>
+    <mat-select placeholder="Priority" [(ngModel)]="data.priority" required>
       <mat-option value="minor">Minor</mat-option>
       <mat-option value="major">Major</mat-option>
       <mat-option value="blocker">Blocker</mat-option>
@@ -23,7 +23,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Color" [(value)]="data.color">
+    <mat-select placeholder="Color" [(ngModel)]="data.color">
       <mat-option value="default">Default</mat-option>
       <mat-option value="blue">Blue</mat-option>
       <mat-option value="green">Green</mat-option>
@@ -34,23 +34,29 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input
-      matInput
-      placeholder="Assigned to"
-      autocomplete="off"
-      [(ngModel)]="data.assignedTo"
-      required
-    />
+    <mat-select placeholder="Assigned to" [(ngModel)]="data.assignedTo">
+      <mat-option *ngFor="let member of members" [value]="member.name">{{
+        member.name
+      }}</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Card Type" [(value)]="data.type" required>
+    <mat-select placeholder="Card Type" [(ngModel)]="data.type" required>
       <mat-option value="story">Story</mat-option>
       <mat-option value="task">Task</mat-option>
       <mat-option value="issue">Issue</mat-option>
     </mat-select>
   </mat-form-field>
 </div>
+
+<mat-form-field>
+  <mat-select placeholder="Epic" [(ngModel)]="data.epic">
+    <mat-option *ngFor="let epic of epics" [value]="epic.title">{{
+      epic.title
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
 
 <mat-form-field>
   <textarea

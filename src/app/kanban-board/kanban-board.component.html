@@ -20,14 +20,30 @@
     </mat-menu>
 
     <mat-menu #viewEpics="matMenu">
-      <button mat-menu-item *ngFor="let epic of epics">
-        {{ epic.epicName }}
+      <button mat-menu-item *ngFor="let epic of epics; let i = index">
+        <button
+          type="button"
+          class="btn btn-danger btn-circle btn-sm"
+          (click)="openDialogConfirm(i, epic.title)"
+        >
+          <i class="glyphicon glyphicon-remove"></i>
+        </button>
+        &nbsp;
+        {{ epic.title }}
       </button>
     </mat-menu>
 
     <mat-menu #viewMembers="matMenu">
-      <button mat-menu-item *ngFor="let member of members">
-        {{ member.memberName }}
+      <button mat-menu-item *ngFor="let member of members; let i = index">
+        <button
+          type="button"
+          class="btn btn-danger btn-circle btn-sm"
+          (click)="openDialogConfirm(i, member.name)"
+        >
+          <i class="glyphicon glyphicon-remove"></i>
+        </button>
+        &nbsp;
+        {{ member.name }}
       </button>
     </mat-menu>
   </mat-toolbar>

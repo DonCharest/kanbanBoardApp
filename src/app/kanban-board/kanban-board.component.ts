@@ -4,6 +4,8 @@ import { AddEditCardDialogComponent } from '../add-edit-card-dialog/add-edit-car
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MemberDialogComponent } from '../member-dialog/member-dialog.component';
 import { EpicDialogComponent } from '../epic-dialog/epic-dialog.component';
+import { Member, Epic } from '../model/data';
+import { DataProviderService } from '../model/data-provider.service';
 
 import {
   CdkDragDrop,
@@ -32,12 +34,10 @@ export class KanbanBoardComponent implements OnInit {
   id: string;
   count: any;
 
-  members: any[];
-  memberName: string;
-  epics: any[];
-  epicName: string;
+  members: Member[];
+  epics: Epic[];
 
-  constructor(public dialog: MatDialog) {
+  constructor(private provider: DataProviderService, public dialog: MatDialog) {
     // Set counter from LS - if available
     this.count = localStorage.getItem('count');
     // Otherwise start at 1
@@ -49,9 +49,13 @@ export class KanbanBoardComponent implements OnInit {
     this.wip = [];
     this.review = [];
     this.accepted = [];
+  }
 
-    this.epics = [];
-    this.members = [];
+  ngOnInit() {
+    this.members = this.provider.getMembers();
+    this.epics = this.provider.getEpics();
+
+    this.loadFromLocal();
   }
 
   // function to calculate and update the index of the card after being moved in current array,
@@ -158,7 +162,8 @@ export class KanbanBoardComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(data => {
       this.epics.push({
-        epicName: data.epicName
+        // id: data.id,
+        title: data.epicName
       });
       this.saveToLocal();
     });
@@ -172,7 +177,8 @@ export class KanbanBoardComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(data => {
       this.members.push({
-        memberName: data.memberName
+        // id: data.id,
+        name: data.memberName
       });
       this.saveToLocal();
     });
@@ -200,14 +206,37 @@ export class KanbanBoardComponent implements OnInit {
         }
         if (this.review.some(data => data.id === id)) {
           this.removeReview(i);
-        } else {
+        }
+        if (this.review.some(data => data.id === id)) {
           this.removeAccepted(i);
+        }
+        if (this.members.some(data => data.name === id)) {
+          this.removeMember(i);
+        }
+        if (this.epics.some(data => data.title === id)) {
+          this.removeEpic(i);
+        } else {
+          console.log(`${id} could not be deleted`);
         }
         const a = document.createElement('a');
         a.click();
         a.remove();
       }
     });
+  }
+
+  // methods to remove members
+  public removeMember(index: number) {
+    console.log('removed called, index: ' + index);
+    this.members.splice(index, 1);
+    this.saveToLocal();
+  }
+
+  // methods to remove members
+  public removeEpic(index: number) {
+    console.log('removed called, index: ' + index);
+    this.epics.splice(index, 1);
+    this.saveToLocal();
   }
 
   // methods to remove cards
@@ -263,9 +292,10 @@ export class KanbanBoardComponent implements OnInit {
     if (loadMembers != null) {
       this.members = JSON.parse(loadMembers);
     }
-  }
 
-  ngOnInit() {
-    this.loadFromLocal();
+    const loadEpics = localStorage.getItem('epics');
+    if (loadEpics != null) {
+      this.epics = JSON.parse(loadEpics);
+    }
   }
 }
