@@ -4,7 +4,7 @@ import { AddEditCardDialogComponent } from '../add-edit-card-dialog/add-edit-car
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MemberDialogComponent } from '../member-dialog/member-dialog.component';
 import { EpicDialogComponent } from '../epic-dialog/epic-dialog.component';
-import { Member, Epic } from '../model/data';
+import { Member, Epic, Card } from '../model/data';
 import { DataProviderService } from '../model/data-provider.service';
 
 import {
@@ -19,10 +19,13 @@ import {
   styleUrls: ['./kanban-board.component.css']
 })
 export class KanbanBoardComponent implements OnInit {
-  todo: any[];
-  wip: any[];
-  review: any[];
-  accepted: any[];
+  todo: Card[];
+  wip: Card[];
+  review: Card[];
+  accepted: Card[];
+
+  members: Member[];
+  epics: Epic[];
 
   title: string;
   priority: string;
@@ -34,9 +37,6 @@ export class KanbanBoardComponent implements OnInit {
 
   id: string;
   count: any;
-
-  members: Member[];
-  epics: Epic[];
 
   constructor(private provider: DataProviderService, public dialog: MatDialog) {
     // Set counter from LS - if available
@@ -55,6 +55,11 @@ export class KanbanBoardComponent implements OnInit {
   ngOnInit() {
     this.members = this.provider.getMembers();
     this.epics = this.provider.getEpics();
+    this.todo = this.provider.getTodos();
+    this.wip = this.provider.getWips();
+    this.review = this.provider.getReviews();
+    this.accepted = this.provider.getAccepteds();
+
     this.loadFromLocal();
   }
 
