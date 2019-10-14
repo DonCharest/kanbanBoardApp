@@ -5,12 +5,25 @@
     <input
       matInput
       placeholder="Name"
+      minlength="4"
       maxlength="40"
       autocomplete="off"
       [(ngModel)]="data.epicName"
       required
+      #name="ngModel"
     />
   </mat-form-field>
+  <div
+    *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="name.errors.required">
+      Epic name is required.
+    </div>
+    <div *ngIf="name.errors.minlength">
+      Epic name must be at least 4 characters long.
+    </div>
+  </div>
 </div>
 
 <div mat-dialog-actions>
