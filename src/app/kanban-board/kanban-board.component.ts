@@ -223,7 +223,7 @@ export class KanbanBoardComponent implements OnInit {
         if (this.review.some(data => data.id === id)) {
           this.removeReview(i);
         }
-        if (this.review.some(data => data.id === id)) {
+        if (this.accepted.some(data => data.id === id)) {
           this.removeAccepted(i);
         }
         if (this.members.some(data => data.name === id)) {
@@ -234,9 +234,6 @@ export class KanbanBoardComponent implements OnInit {
         } else {
           console.log(`${id} could not be deleted`);
         }
-        const a = document.createElement('a');
-        a.click();
-        a.remove();
       }
     });
   }

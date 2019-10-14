@@ -109,7 +109,7 @@
                       : 'glyphicon glyphicon-arrow-down'
                   "
                 ></i>
-                {{ card.priority }}
+                <!-- {{ card.priority }} -->
               </div>
             </div>
             <div class="btn-toolbar btn-card-group" role="toolbar">
@@ -148,9 +148,10 @@
             >
               {{ card.epicLink | titlecase }}
             </div>
-            <div class="card-assignedTo">
+            <div *ngIf="card.assignedTo" class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
+            <div *ngIf="!card.assignedTo" class="card-not-assignedTo"></div>
           </div>
         </div>
       </div>
@@ -204,7 +205,7 @@
                       : 'glyphicon glyphicon-arrow-down'
                   "
                 ></i>
-                {{ card.priority }}
+                <!-- {{ card.priority }} -->
               </div>
             </div>
             <div class="btn-toolbar btn-card-group" role="toolbar">
@@ -243,9 +244,10 @@
             >
               {{ card.epicLink | titlecase }}
             </div>
-            <div class="card-assignedTo">
+            <div *ngIf="card.assignedTo" class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
+            <div *ngIf="!card.assignedTo" class="card-not-assignedTo"></div>
           </div>
         </div>
       </div>
@@ -299,7 +301,7 @@
                       : 'glyphicon glyphicon-arrow-down'
                   "
                 ></i>
-                {{ card.priority }}
+                <!-- {{ card.priority }} -->
               </div>
             </div>
             <div class="btn-toolbar btn-card-group" role="toolbar">
@@ -338,9 +340,10 @@
             >
               {{ card.epicLink | titlecase }}
             </div>
-            <div class="card-assignedTo">
+            <div *ngIf="card.assignedTo" class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
+            <div *ngIf="!card.assignedTo" class="card-not-assignedTo"></div>
           </div>
         </div>
       </div>
@@ -394,7 +397,7 @@
                       : 'glyphicon glyphicon-arrow-down'
                   "
                 ></i>
-                {{ card.priority }}
+                <!-- {{ card.priority }} -->
               </div>
             </div>
             <div class="btn-toolbar btn-card-group" role="toolbar">
@@ -433,9 +436,10 @@
             >
               {{ card.epicLink | titlecase }}
             </div>
-            <div class="card-assignedTo">
+            <div *ngIf="card.assignedTo" class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
+            <div *ngIf="!card.assignedTo" class="card-not-assignedTo"></div>
           </div>
         </div>
       </div>

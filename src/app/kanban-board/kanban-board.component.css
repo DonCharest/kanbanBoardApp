@@ -9,13 +9,13 @@
 }
 
 .glyphicon-ban-circle {
-  color: red;
+  color: #d84315;
 }
 .glyphicon-arrow-up {
-  color: red;
+  color: #d84315;
 }
 .glyphicon-arrow-down {
-  color: green;
+  color: #388e3c;
 }
 
 .card-id {
@@ -37,6 +37,11 @@
   margin-top: 10px;
   padding-bottom: 0px;
   color: rgb(26, 24, 24);
+}
+.card-not-assignedTo {
+  min-height: 17px;
+  margin-top: 10px;
+  padding-bottom: 0px;
 }
 .card-epic {
   font-size: 14px;
@@ -95,13 +100,13 @@
   text-align: left;
 }
 .card-box {
-  border: 2px solid grey;
+  border: 2px solid #bdbdbd;
 }
 .card-issue {
-  border: 2px solid red;
+  border: 3px solid #d84315;
 }
 .card-task {
-  border: 2px solid blue;
+  border: 2px solid #1565c0;
 }
 
 .card-default {
