@@ -63,6 +63,7 @@
       </button>
       To Do
     </h2>
+
     <cdk-virtual-scroll-viewport itemSize="90">
       <div
         cdkDropList
@@ -95,13 +96,12 @@
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
-          <div class="card-text-group">
-            <ng-container></ng-container>
+          <div class="card-header card-text-group">
             <div class="card-id">
               {{ card.id }}
               <div class="card-priority">
                 <i
-                  [className]="
+                  [ngClass]="
                     card.priority === 'blocker'
                       ? 'glyphicon glyphicon-ban-circle'
                       : card.priority === 'major'
@@ -112,41 +112,45 @@
                 {{ card.priority }}
               </div>
             </div>
+            <div class="btn-toolbar btn-card-group" role="toolbar">
+              <button
+                type="button"
+                class="btn btn-danger btn-circle"
+                (click)="openDialogConfirm(i, card.id)"
+              >
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info btn-circle"
+                (click)="
+                  openDialogEdit(
+                    card.title,
+                    card.priority,
+                    card.assignedTo,
+                    card.type,
+                    i,
+                    card.id,
+                    card.color,
+                    card.comments,
+                    card.epicLink
+                  )
+                "
+              >
+                <i class="glyphicon glyphicon-edit"></i>
+              </button>
+            </div>
+          </div>
+          <div class="body card-text-group" style="clear: both;">
             <div class="card-title">{{ card.title | titlecase }}</div>
-            <div class="card-epic">
+            <div
+              [ngClass]="card.epicLink == null ? 'card-no-epic' : 'card-epic'"
+            >
               {{ card.epicLink | titlecase }}
             </div>
             <div class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
-          </div>
-          <div class="btn-toolbar" role="toolbar">
-            <button
-              type="button"
-              class="btn btn-danger btn-circle"
-              (click)="openDialogConfirm(i, card.id)"
-            >
-              <i class="glyphicon glyphicon-remove"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-info btn-circle"
-              (click)="
-                openDialogEdit(
-                  card.title,
-                  card.priority,
-                  card.assignedTo,
-                  card.type,
-                  i,
-                  card.id,
-                  card.color,
-                  card.comments,
-                  card.epicLink
-                )
-              "
-            >
-              <i class="glyphicon glyphicon-edit"></i>
-            </button>
           </div>
         </div>
       </div>
@@ -187,12 +191,12 @@
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
-          <div class="card-text-group">
+          <div class="card-header card-text-group">
             <div class="card-id">
               {{ card.id }}
               <div class="card-priority">
                 <i
-                  [className]="
+                  [ngClass]="
                     card.priority === 'blocker'
                       ? 'glyphicon glyphicon-ban-circle'
                       : card.priority === 'major'
@@ -203,39 +207,45 @@
                 {{ card.priority }}
               </div>
             </div>
+            <div class="btn-toolbar btn-card-group" role="toolbar">
+              <button
+                type="button"
+                class="btn btn-danger btn-circle"
+                (click)="openDialogConfirm(i, card.id)"
+              >
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info btn-circle"
+                (click)="
+                  openDialogEdit(
+                    card.title,
+                    card.priority,
+                    card.assignedTo,
+                    card.type,
+                    i,
+                    card.id,
+                    card.color,
+                    card.comments,
+                    card.epicLink
+                  )
+                "
+              >
+                <i class="glyphicon glyphicon-edit"></i>
+              </button>
+            </div>
+          </div>
+          <div class="body card-text-group" style="clear: both;">
             <div class="card-title">{{ card.title | titlecase }}</div>
-            <div class="card-epic">{{ card.epicLink | titlecase }}</div>
+            <div
+              [ngClass]="card.epicLink == null ? 'card-no-epic' : 'card-epic'"
+            >
+              {{ card.epicLink | titlecase }}
+            </div>
             <div class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
-          </div>
-          <div class="btn-toolbar" role="toolbar">
-            <button
-              type="button"
-              class="btn btn-danger btn-circle"
-              (click)="openDialogConfirm(i, card.id)"
-            >
-              <i class="glyphicon glyphicon-remove"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-info btn-circle"
-              (click)="
-                openDialogEdit(
-                  card.title,
-                  card.priority,
-                  card.assignedTo,
-                  card.type,
-                  i,
-                  card.id,
-                  card.color,
-                  card.comments,
-                  card.epicLink
-                )
-              "
-            >
-              <i class="glyphicon glyphicon-edit"></i>
-            </button>
           </div>
         </div>
       </div>
@@ -276,12 +286,12 @@
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
-          <div class="card-text-group">
+          <div class="card-header card-text-group">
             <div class="card-id">
               {{ card.id }}
               <div class="card-priority">
                 <i
-                  [className]="
+                  [ngClass]="
                     card.priority === 'blocker'
                       ? 'glyphicon glyphicon-ban-circle'
                       : card.priority === 'major'
@@ -292,39 +302,45 @@
                 {{ card.priority }}
               </div>
             </div>
+            <div class="btn-toolbar btn-card-group" role="toolbar">
+              <button
+                type="button"
+                class="btn btn-danger btn-circle"
+                (click)="openDialogConfirm(i, card.id)"
+              >
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info btn-circle"
+                (click)="
+                  openDialogEdit(
+                    card.title,
+                    card.priority,
+                    card.assignedTo,
+                    card.type,
+                    i,
+                    card.id,
+                    card.color,
+                    card.comments,
+                    card.epicLink
+                  )
+                "
+              >
+                <i class="glyphicon glyphicon-edit"></i>
+              </button>
+            </div>
+          </div>
+          <div class="body card-text-group" style="clear: both;">
             <div class="card-title">{{ card.title | titlecase }}</div>
-            <div class="card-epic">{{ card.epicLink | titlecase }}</div>
+            <div
+              [ngClass]="card.epicLink == null ? 'card-no-epic' : 'card-epic'"
+            >
+              {{ card.epicLink | titlecase }}
+            </div>
             <div class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
-          </div>
-          <div class="btn-toolbar" role="toolbar">
-            <button
-              type="button"
-              class="btn btn-danger btn-circle"
-              (click)="openDialogConfirm(i, card.id)"
-            >
-              <i class="glyphicon glyphicon-remove"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-info btn-circle"
-              (click)="
-                openDialogEdit(
-                  card.title,
-                  card.priority,
-                  card.assignedTo,
-                  card.type,
-                  i,
-                  card.id,
-                  card.color,
-                  card.comments,
-                  card.epicLink
-                )
-              "
-            >
-              <i class="glyphicon glyphicon-edit"></i>
-            </button>
           </div>
         </div>
       </div>
@@ -365,12 +381,12 @@
           cdkDrag
         >
           <div class="card-custom-placeholder" *cdkDragPlaceholder></div>
-          <div class="card-text-group">
+          <div class="card-header card-text-group">
             <div class="card-id">
               {{ card.id }}
               <div class="card-priority">
                 <i
-                  [className]="
+                  [ngClass]="
                     card.priority === 'blocker'
                       ? 'glyphicon glyphicon-ban-circle'
                       : card.priority === 'major'
@@ -381,39 +397,45 @@
                 {{ card.priority }}
               </div>
             </div>
+            <div class="btn-toolbar btn-card-group" role="toolbar">
+              <button
+                type="button"
+                class="btn btn-danger btn-circle"
+                (click)="openDialogConfirm(i, card.id)"
+              >
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info btn-circle"
+                (click)="
+                  openDialogEdit(
+                    card.title,
+                    card.priority,
+                    card.assignedTo,
+                    card.type,
+                    i,
+                    card.id,
+                    card.color,
+                    card.comments,
+                    card.epicLink
+                  )
+                "
+              >
+                <i class="glyphicon glyphicon-edit"></i>
+              </button>
+            </div>
+          </div>
+          <div class="body card-text-group" style="clear: both;">
             <div class="card-title">{{ card.title | titlecase }}</div>
-            <div class="card-epic">{{ card.epicLink | titlecase }}</div>
+            <div
+              [ngClass]="card.epicLink == null ? 'card-no-epic' : 'card-epic'"
+            >
+              {{ card.epicLink | titlecase }}
+            </div>
             <div class="card-assignedTo">
               Assigned to: {{ card.assignedTo | titlecase }}
             </div>
-          </div>
-          <div class="btn-toolbar" role="toolbar">
-            <button
-              type="button"
-              class="btn btn-danger btn-circle"
-              (click)="openDialogConfirm(i, card.id)"
-            >
-              <i class="glyphicon glyphicon-remove"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-info btn-circle"
-              (click)="
-                openDialogEdit(
-                  card.title,
-                  card.priority,
-                  card.assignedTo,
-                  card.type,
-                  i,
-                  card.id,
-                  card.color,
-                  card.comments,
-                  card.epicLink
-                )
-              "
-            >
-              <i class="glyphicon glyphicon-edit"></i>
-            </button>
           </div>
         </div>
       </div>

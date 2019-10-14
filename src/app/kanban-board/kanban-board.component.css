@@ -19,36 +19,45 @@
 }
 
 .card-id {
-  width: 220px;
   color: rgb(33, 75, 214);
   font-size: 12px;
   font-weight: bold;
   margin-bottom: 10px;
+  float: left;
+}
+.btn-card-group {
+  height: 35px;
+  float: right;
 }
 .card-title {
   font-size: 16px;
-  width: 200px;
-  margin-bottom: 10px;
 }
-
 .card-assignedTo {
   font-size: 12px;
   margin-top: 10px;
   padding-bottom: 0px;
   color: rgb(26, 24, 24);
 }
-
 .card-epic {
   font-size: 14px;
-  font-weight: 550;
+  font-weight: 525;
+  margin-top: 10px;
   margin-bottom: 5px;
   color: #00000f;
   background-color: rgb(217, 220, 226);
   background-color: #ede7f6;
   border-radius: 18px;
   text-align: center;
-  width: 215px;
+  align-content: center;
   font-style: italic;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 20px;
+}
+.card-no-epic {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  min-height: 20px;
 }
 
 .bottom-row {
@@ -76,7 +85,7 @@
   max-height: 100%;
   padding: 20px 10px;
   color: rgba(0, 0, 0, 0.87);
-  display: flex;
+  /* display: flex; */
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
@@ -86,15 +95,12 @@
   text-align: left;
 }
 .card-box {
-  /* background-color: rgb(235, 232, 232); */
   border: 2px solid grey;
 }
 .card-issue {
-  /* background-color: rgb(247, 178, 178); */
   border: 2px solid red;
 }
 .card-task {
-  /* background-color: rgb(198, 219, 226); */
   border: 2px solid blue;
 }
 
@@ -140,6 +146,7 @@
   border: dotted 3px #999;
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   min-height: 140px;
+  min-height: 170px;
   margin-bottom: 15px;
   border-radius: 8px;
 }
