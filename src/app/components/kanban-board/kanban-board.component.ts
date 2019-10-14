@@ -4,8 +4,8 @@ import { AddEditCardDialogComponent } from '../add-edit-card-dialog/add-edit-car
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MemberDialogComponent } from '../member-dialog/member-dialog.component';
 import { EpicDialogComponent } from '../epic-dialog/epic-dialog.component';
-import { Member, Epic, Card } from '../model/data';
-import { DataProviderService } from '../model/data-provider.service';
+import { Member, Epic, Card } from '../../model/data';
+import { DataProviderService } from '../../model/data-provider.service';
 
 import {
   CdkDragDrop,

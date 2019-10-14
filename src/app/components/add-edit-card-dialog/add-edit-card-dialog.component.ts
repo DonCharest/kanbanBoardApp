@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Member, Epic } from '../model/data';
-import { DataProviderService } from '../model/data-provider.service';
+import { Member, Epic } from '../../model/data';
+import { DataProviderService } from '../../model/data-provider.service';
 
 @Component({
   selector: 'app-modal',

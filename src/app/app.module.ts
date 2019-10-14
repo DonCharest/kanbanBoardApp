@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { KanbanBoardComponent } from './kanban-board/kanban-board.component';
+import { KanbanBoardComponent } from './components/kanban-board/kanban-board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddEditCardDialogComponent } from './add-edit-card-dialog/add-edit-card-dialog.component';
+import { AddEditCardDialogComponent } from './components/add-edit-card-dialog/add-edit-card-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -20,9 +20,9 @@ import {
   MatToolbarModule
 } from '@angular/material';
 
-import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { MemberDialogComponent } from './member-dialog/member-dialog.component';
-import { EpicDialogComponent } from './epic-dialog/epic-dialog.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MemberDialogComponent } from './components/member-dialog/member-dialog.component';
+import { EpicDialogComponent } from './components/epic-dialog/epic-dialog.component';
 
 @NgModule({
   declarations: [
