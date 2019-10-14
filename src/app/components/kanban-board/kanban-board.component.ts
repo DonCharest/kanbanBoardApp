@@ -119,32 +119,34 @@ export class KanbanBoardComponent implements OnInit {
         epicLink
       }
     });
-    console.log('id: ' + id);
-    dialogRef.afterClosed().subscribe(data => {
-      const obj = {
-        id: data.id,
-        title: data.title,
-        priority: data.priority,
-        assignedTo: data.assignedTo,
-        type: data.type,
-        color: data.color,
-        comments: data.comments,
-        epicLink: data.epicLink
-      };
 
-      // find the array that contains the card edited and update it.
-      if (this.todo.some(data => data.id === id)) {
-        this.todo.splice(index, 1, obj);
-        this.saveToLocal();
-      } else if (this.wip.some(data => data.id === id)) {
-        this.wip.splice(index, 1, obj);
-        this.saveToLocal();
-      } else if (this.review.some(data => data.id === id)) {
-        this.review.splice(index, 1, obj);
-        this.saveToLocal();
-      } else if (this.accepted.some(data => data.id === id)) {
-        this.accepted.splice(index, 1, obj);
-        this.saveToLocal();
+    dialogRef.afterClosed().subscribe(data => {
+      if (data) {
+        const obj = {
+          id: data.id,
+          title: data.title,
+          priority: data.priority,
+          assignedTo: data.assignedTo,
+          type: data.type,
+          color: data.color,
+          comments: data.comments,
+          epicLink: data.epicLink
+        };
+
+        // find the array that contains the card edited and update it.
+        if (this.todo.some(data => data.id === id)) {
+          this.todo.splice(index, 1, obj);
+          this.saveToLocal();
+        } else if (this.wip.some(data => data.id === id)) {
+          this.wip.splice(index, 1, obj);
+          this.saveToLocal();
+        } else if (this.review.some(data => data.id === id)) {
+          this.review.splice(index, 1, obj);
+          this.saveToLocal();
+        } else if (this.accepted.some(data => data.id === id)) {
+          this.accepted.splice(index, 1, obj);
+          this.saveToLocal();
+        }
       }
     });
   }
@@ -243,9 +245,8 @@ export class KanbanBoardComponent implements OnInit {
         }
         if (this.epics.some(data => data.title === id)) {
           this.removeEpic(i);
-        } else {
-          console.log(`${id} could not be deleted`);
         }
+        // else { console.log(`${id} could not be deleted`); }
       }
     });
   }
