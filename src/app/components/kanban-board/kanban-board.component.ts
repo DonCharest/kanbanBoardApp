@@ -56,13 +56,14 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    // load mock data
     this.members = this.provider.getMembers();
     this.epics = this.provider.getEpics();
     this.todo = this.provider.getTodos();
     this.wip = this.provider.getWips();
     this.review = this.provider.getReviews();
     this.accepted = this.provider.getAccepteds();
-
+    // load data from local storage
     this.loadFromLocal();
   }
 
@@ -131,6 +132,7 @@ export class KanbanBoardComponent implements OnInit {
         epicLink: data.epicLink
       };
 
+      // find the array that contains the card edited and update it.
       if (this.todo.some(data => data.id === id)) {
         this.todo.splice(index, 1, obj);
         this.saveToLocal();
@@ -154,21 +156,25 @@ export class KanbanBoardComponent implements OnInit {
       data: {}
     });
 
+    // push card params into ToDo array as new card object
     dialog.afterClosed().subscribe(data => {
-      this.todo.push({
-        id: 'PROJ-' + this.count,
-        title: data.title,
-        priority: data.priority,
-        assignedTo: data.assignedTo,
-        type: data.type,
-        color: data.color,
-        comments: data.comments,
-        epicLink: data.epicLink
-      });
+      if (data) {
+        this.todo.push({
+          id: 'PROJ-' + this.count,
+          title: data.title,
+          priority: data.priority,
+          assignedTo: data.assignedTo,
+          type: data.type,
+          color: data.color,
+          comments: data.comments,
+          epicLink: data.epicLink
+        });
 
-      this.count++;
-      this.count = this.leftFillNum(this.count, 6);
-      this.saveToLocal();
+        this.count++;
+        // add leading zeros to count to create a six digit number
+        this.count = this.leftFillNum(this.count, 6);
+        this.saveToLocal();
+      }
     });
   }
 
@@ -178,11 +184,14 @@ export class KanbanBoardComponent implements OnInit {
       width: '450px',
       data: {}
     });
+
     dialog.afterClosed().subscribe(data => {
-      this.epics.push({
-        title: data.epicName
-      });
-      this.saveToLocal();
+      if (data) {
+        this.epics.push({
+          title: data.epicName
+        });
+        this.saveToLocal();
+      }
     });
   }
 
@@ -193,10 +202,12 @@ export class KanbanBoardComponent implements OnInit {
       data: {}
     });
     dialog.afterClosed().subscribe(data => {
-      this.members.push({
-        name: data.memberName
-      });
-      this.saveToLocal();
+      if (data) {
+        this.members.push({
+          name: data.memberName
+        });
+        this.saveToLocal();
+      }
     });
   }
 
@@ -212,6 +223,7 @@ export class KanbanBoardComponent implements OnInit {
         }
       }
     });
+    // remove element from
     dialog.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         if (this.todo.some(data => data.id === id)) {
