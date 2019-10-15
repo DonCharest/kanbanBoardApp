@@ -11,7 +11,7 @@ export const EPICS: Epic[] = [
   { title: 'Design Board Layout' },
   { title: 'Implement Board Layout' },
   { title: 'Design Data Model' },
-  { title: 'Develop UI' },
+  { title: 'Develop User Interface' },
   { title: 'Implement Drag & Drop' },
   { title: 'Develop Provider-Service' }
 ];
@@ -19,7 +19,7 @@ export const EPICS: Epic[] = [
 export const TODOS: Card[] = [
   {
     title: 'Design card and column structure',
-    priority: 'major',
+    priority: 'blocker',
     assignedTo: 'Don Charest',
     type: 'story',
     color: 'default',
@@ -29,8 +29,8 @@ export const TODOS: Card[] = [
   },
   {
     title: 'Create Model files',
-    priority: 'major',
-    assignedTo: 'Don Charest',
+    priority: 'minor',
+    assignedTo: 'Mark Pugliese',
     type: 'story',
     color: 'default',
     comments: 'Work completed',
@@ -41,66 +41,66 @@ export const TODOS: Card[] = [
 
 export const WIPS: Card[] = [
   {
-    title: 'Design card and column structure',
+    title: 'Develop Controller for Drag-and-Drop',
     priority: 'major',
     assignedTo: 'Don Charest',
     type: 'story',
     color: 'default',
     comments: 'Work completed',
-    epicLink: 'Design Board Layout',
+    epicLink: 'Implement Drag & Drop',
     id: 'DEMO-000003'
   },
   {
-    title: 'Create Model files',
+    title: 'Develop Controller for Provider Service',
     priority: 'major',
     assignedTo: 'Don Charest',
     type: 'story',
     color: 'default',
     comments: 'Work completed',
-    epicLink: 'Design Data Model',
+    epicLink: 'Develop Provider-Service',
     id: 'DEMO-000004'
   }
 ];
 
 export const REVIEWS: Card[] = [
   {
-    title: 'Design card and column structure',
+    title: 'Fix Bug with card priority display',
     priority: 'major',
-    assignedTo: 'Don Charest',
+    assignedTo: 'Steve Price',
     type: 'issue',
-    color: 'pink',
+    color: 'default',
     comments: 'Work completed',
-    epicLink: 'Design Board Layout',
+    epicLink: null,
     id: 'DEMO-000005'
   },
   {
-    title: 'Create Model files',
-    priority: 'major',
-    assignedTo: 'Don Charest',
+    title: 'Create consistent component theme',
+    priority: 'minor',
+    assignedTo: 'Tim Cox',
     type: 'story',
-    color: 'green',
+    color: 'default',
     comments: 'Work completed',
-    epicLink: 'Design Data Model',
+    epicLink: 'Develop User Interface',
     id: 'DEMO-000006'
   }
 ];
 
 export const ACCEPTEDS: Card[] = [
   {
-    title: 'Design card and column structure',
+    title: 'complete Drag-and-Drop Animation',
     priority: 'major',
     assignedTo: 'Don Charest',
     type: 'story',
     color: 'default',
     comments: 'Work completed',
-    epicLink: 'Design Board Layout',
+    epicLink: null,
     id: 'DEMO-000007'
   },
   {
-    title: 'Create Model files',
-    priority: 'major',
-    assignedTo: 'Don Charest',
-    type: 'story',
+    title: 'Create Mock Data files',
+    priority: 'minor',
+    assignedTo: 'Mark Pugliese',
+    type: 'task',
     color: 'default',
     comments: 'Work completed',
     epicLink: 'Design Data Model',
