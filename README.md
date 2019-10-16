@@ -18,7 +18,7 @@ Each unit of work is defined and represented on the board by a card. The card co
 - `Card Type` - story, task, or issue.
 - `Assigned to` - the person responsible for completing the work.
 - `Epic` - the card me be graphically linked to an Epic.
-- `Color` - the cards are white by default, but may be changed to varying colors for further visual identification.
+- `Color` - the cards are white by default but may be changed to varying colors for further visual identification.
 - `Comments` - comments may be added to the cards at any time to provide additional details, or status updates.
 
 ### Creating a new card
@@ -38,13 +38,19 @@ Once selected, a modal dialog opens and prompts the user confirmation; if the us
 
 ### Adding new Epics to the project
 
-New Epics may be added to the project and subsequently displayed on cards. `Epics are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then higlighting Epics, followed by Add New Epic. A modal dialog opens and then user completes the form and selects save; the modal then closes and the new Epic is ready to be used in the project.
-`Epics may be deleted` by selecting view Epics, then by selecting the red cross by the Epic; a dialog opens and after confimration, the Epic is removed from the project.
+New Epics may be added to the project and subsequently displayed on cards. `Epics are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then higlighting Epics, followed by Add New Epic. A modal dialog opens and then user completes the form and selects save; the modal then closes, and the new Epic is ready to be used in the project.
+
+### Deleting Epics from the project
+
+`Epics may be deleted` by selecting `view Epics`, then by `selecting the red cross` by the Epic; a dialog opens and after confimration, the Epic is removed from the project.
 
 ### Adding new Members to the project
 
-New Members are added to the project and are used to satisfy the `assigned to field` on the card. `Members are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then higlighting Members, followed by Add New Member. A modal dialog opens and then user completes the form and selects save; the modal then closes and the new Member is ready to be used in the project.
-`Members may be deleted` by selecting view Members, then by selecting the red cross by the Member; a dialog opens and after confimration, the Member is removed from the project.
+New Members are added to the project and are used to satisfy the `assigned to field` on the card. `Members are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then higlighting Members, followed by Add New Member. A modal dialog opens and then user completes the form and selects save; the modal then closes, and the new Member is ready to be used in the project.
+
+### Deleting Members from the project
+
+`Members may be deleted` by selecting `view Members`, then by selecting the `red cross by the Member`; a dialog opens and after confimration, the Member is removed from the project.
 
 ## Running the Application
 
