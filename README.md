@@ -21,6 +21,11 @@ Each unit of work is defined and represented on the board by a card. The card co
 - `Color` - the cards are white by default, but may be changed to varying colors for further visual identification.
 - `Comments` - comments may be added to the cards at any time to provide additional details, or status updates.
 
+### Creating a new card
+
+New Cards are added to the board by selecting the `circular, green plus button`, located at the top of the To Do column.
+Once selected, a modal dialog opens; the user then completes the form, and a ne card is placed into th To Do column.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
