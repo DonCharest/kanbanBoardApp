@@ -21,6 +21,8 @@ Each unit of work is defined and represented on the board by a card. The card co
 - `Color` - the cards are white by default but may be changed to varying colors for further visual identification.
 - `Comments` - comments may be added to the cards at any time to provide additional details, or status updates.
 
+The Kanban cards are draggable and sortable, and may be placed in any order, in any of the four work stage columns.
+
 ### Creating a new card
 
 New Cards are added to the board by selecting the `circular, green plus button`, located at the top of the To Do column.
