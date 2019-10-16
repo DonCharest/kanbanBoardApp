@@ -1,6 +1,6 @@
 # KanbanBoardApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
+### Summary
 
 A Kanban Board is tool used to manage projects by visually depicted the work to be completed at each stage throughout the lifecycle of the project.
 
@@ -24,28 +24,30 @@ Each unit of work is defined and represented on the board by a card. The card co
 ### Creating a new card
 
 New Cards are added to the board by selecting the `circular, green plus button`, located at the top of the To Do column.
-Once selected, a modal dialog opens; the user then completes the form, and a ne card is placed into th To Do column.
+Once selected, a modal dialog opens; the user then completes the form and selects `save`; the modal closes and a new card is placed into the `To Do column`.
 
-## Development server
+### Editing a new card
+
+Cards may be edited by selecting the `circular, blue edit button`, located inside the card.
+Once selected, a modal dialog opens; the user then updates the form fields and selects `save`; the modal closes and the changes are made to the card.
+
+### Deleting a card
+
+Cards may be deleted by selecting the `circular, red times button`, located inside the card.
+Once selected, a modal dialog opens and prompts the user confirmation; if the user selects `yes` the modal closes and the card is removed from the board.
+
+### Adding new Epics to the project
+
+New Epics may be added to the project and subsequently displayed on cards. `Epics are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then higlighting Epics, followed by Add New Epic. A modal dialog opens and then user completes the form and selects save; the modal then closes and the new Epic is ready to be used in the project.
+`Epics may be deleted` by selecting view Epics, then by selecting the red cross by the Epic; a dialog opens and after confimration, the Epic is removed from the project.
+
+### Adding new Members to the project
+
+New Members are added to the project and are used to satisfy the `assigned to field` on the card. `Members are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then higlighting Members, followed by Add New Member. A modal dialog opens and then user completes the form and selects save; the modal then closes and the new Member is ready to be used in the project.
+`Members may be deleted` by selecting view Members, then by selecting the red cross by the Member; a dialog opens and after confimration, the Member is removed from the project.
+
+## Running the Application
+
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
