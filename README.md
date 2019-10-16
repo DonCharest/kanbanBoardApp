@@ -2,12 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
 
+## Description
+
 The Kanban board is divided into four stages of work:
 
-1. Todo - New work added to the board
-2. In Progress
-3. In Review
-4. Accepted
+1. Todo - new work added to the board.
+2. In Progress - work that has been started.
+3. In Review - work that has been completed and is under review.
+4. Accepted - reviewed work that has met the acceptance criteria.
 
 ## Development server
 
