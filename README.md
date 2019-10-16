@@ -2,9 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
 
-The Kanban board is divided into four stages od work
+The Kanban board is divided into four stages of work:
 
-- 1. Todo
+1. Todo
+
+- New work added to the board
+
+2. In Progress
+3. In Review
+4. Accepted
 
 ## Development server
 
