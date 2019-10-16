@@ -2,7 +2,7 @@
 
 ### Summary
 
-A Kanban Board is tool used to manage projects by visually depicted the work to be completed at each stage throughout the lifecycle of the project.
+A Kanban Board is tool used to manage projects by visually depicting the work to be completed at each stage throughout the lifecycle of the project.
 
 The Kanban board is divided into four ordered stages of work:
 
@@ -11,7 +11,7 @@ The Kanban board is divided into four ordered stages of work:
 3. `In Review` - work that has been completed and is under review.
 4. `Accepted` - reviewed work that has met the acceptance criteria.
 
-Each unit of work is defined and represented on the board by a card. The card contians meta-data about the work to be done, including:
+Each unit of work is defined and represented on the board by a card. The card contains meta-data about the work to be done, including:
 
 - `Title` - summary of the work to be done.
 - `Priority` - level of importance of the work (i.e. minor, major, or blocker).
@@ -36,23 +36,23 @@ Once selected, a modal dialog opens; the user then updates the form fields and s
 ### Deleting a card
 
 Cards may be deleted by selecting the `circular, red times button`, located inside the card.
-Once selected, a modal dialog opens and prompts the user for deletion confirmation; if the user selects `yes` the modal closes and the card is removed from the board.
+Once selected, a modal dialog opens and prompts the user for deletion confirmation; if the user selects `yes`, the modal closes and the card is removed from the board.
 
 ### Adding new Epics to the project
 
-New Epics may be added to the project and subsequently displayed on cards. `Epics are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then `higlighting Epics`, followed by `Add New Epic`. A modal dialog opens and then user completes the form and selects save; the modal then closes, and the new Epic is ready to be used in the project.
+New Epics may be added to the project and subsequently displayed on cards. `Epics are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then `highlighting Epics`, followed by `Add New Epic`. A modal dialog opens and then user completes the form and selects save; the modal then closes, and the new Epic is ready to be used in the project.
 
 ### Deleting Epics from the project
 
-`Epics may be deleted` by selecting `view Epics`, then by `selecting the red cross` by the Epic; a modal dialog opens and prompts the user for deletion confirmation, if the user selects `yes` the Epic is removed from the project.
+`Epics may be deleted` by selecting `view Epics`, then by `selecting the red cross` by the Epic; a modal dialog opens and prompts the user for deletion confirmation, if the user selects `yes`, the Epic is removed from the project.
 
 ### Adding new Members to the project
 
-New Members are added to the project and are used to satisfy the `assigned to field` on the card. `Members are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then `higlighting Members`, followed by `Add New Member`. A modal dialog opens and then user completes the form and selects save; the modal then closes, and the new Member is ready to be used in the project.
+New Members are added to the project and are used to satisfy the `assigned to field` on the card. `Members are added by selecting the vertical more options button`, located in the toolbar at the top of the page; then `highlighting Members`, followed by `Add New Member`. A modal dialog opens and then user completes the form and selects save; the modal then closes, and the new Member is ready to be used in the project.
 
 ### Deleting Members from the project
 
-`Members may be deleted` by selecting `view Members`, then by selecting the `red cross by the Member`; a modal dialog opens and prompts the user for deletion confirmation, if the user selects `yes` the Member is removed from the project.
+`Members may be deleted` by selecting `view Members`, then by selecting the `red cross by the Member`; a modal dialog opens and prompts the user for deletion confirmation, if the user selects `yes`, the Member is removed from the project.
 
 ## Running the Application
 
