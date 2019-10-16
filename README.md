@@ -4,22 +4,22 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 A Kanban Board is tool used to manage projects by visually depicted the work to be completed at each stage throughout the lifecycle of the project.
 
-This Kanban board is divided into four stages of work:
+This Kanban board is divided into four ordered stages of work:
 
-1. Todo - new work added to the board.
-2. In Progress - work that has been started.
-3. In Review - work that has been completed and is under review.
-4. Accepted - reviewed work that has met the acceptance criteria.
+1. `To Do` - new work added to the board.
+2. `In Progress` - work that has been started.
+3. `In Review` - work that has been completed and is under review.
+4. `Accepted` - reviewed work that has met the acceptance criteria.
 
 Each unit of work is defined and represented on the board by a card. The card contians meta-data about the work to be done, including:
 
-- Title - summary of the work to be done.
-- Priority - level of importance of the work (i.e. minor, major, or blocker).
-- Card Type - story, task, or issue.
-- Assigned to - the person responsible for completing the work.
-- Epic - the card me be graphically linked to an Epic.
-- Color - the cards are white by default, but may be changed to varying colors for further visual identification.
-- Comments - comments may be added to the cards at any time to provide additional details, or status updates.
+- `Title` - summary of the work to be done.
+- `Priority` - level of importance of the work (i.e. minor, major, or blocker).
+- `Card Type` - story, task, or issue.
+- `Assigned to` - the person responsible for completing the work.
+- `Epic` - the card me be graphically linked to an Epic.
+- `Color` - the cards are white by default, but may be changed to varying colors for further visual identification.
+- `Comments` - comments may be added to the cards at any time to provide additional details, or status updates.
 
 ## Development server
 
