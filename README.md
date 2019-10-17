@@ -23,6 +23,8 @@ Each unit of work is defined and represented on the board by a card. The card co
 
 The Kanban cards are draggable and sortable, and may be placed in any order, in any of the four work stage columns.
 
+Upon running the application for the first time, `Data-Data` will will loaded and rendered on the Kanban board. The Demo-Data includes `Card, Member and Epic samples`. Once any change is made, the Demo-data, along with any changes, will be saved into local storage. The Demo-Data may be deleted from the project at any time.
+
 ### Creating a new card
 
 New Cards are added to the board by selecting the `circular, green plus button`, located at the top of the To Do column.
@@ -59,6 +61,10 @@ New Members are added to the project and are used to satisfy the `assigned to fi
 ### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Further help
 
