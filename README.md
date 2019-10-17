@@ -23,7 +23,7 @@ Each unit of work is defined and represented on the board by a card. The card co
 
 The Kanban cards are draggable and sortable, and may be placed in any order, in any of the four work stage columns.
 
-Upon running the application for the first time, `Data-Data` will will loaded and rendered on the Kanban board. The Demo-Data includes `Card, Member and Epic samples`. Once any change is made, the Demo-data, along with any changes, will be saved into local storage. The Demo-Data may be deleted from the project at any time.
+Upon running the application for the first time, `Demo-Data` will be loaded and rendered on the Kanban board. The Demo-Data includes `Card, Member and Epic samples`. Once any change is made, the Demo-Data, along with any changes, will be saved into local storage. The Demo-Data may be deleted from the project at any time.
 
 ### Creating a new card
 
