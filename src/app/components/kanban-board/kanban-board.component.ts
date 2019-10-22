@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import { AddEditCardDialogComponent } from '../add-edit-card-dialog/add-edit-card-dialog.component';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MemberDialogComponent } from '../member-dialog/member-dialog.component';
@@ -68,13 +68,15 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   // function to pad string
-  public leftFillNum(num: any, targetLength: any) {
-    return num.toString().padStart(targetLength, 0);
+  public leftFillNum = (num: any, targetLength: any): string => {
+    return num.toString().padStart(targetLength);
   }
 
-  // function to calculate and update the index of the card after being moved in current array,
-  // or drooped into a new array
-  public drop(event: CdkDragDrop<string[]>) {
+  /*
+   function to calculate and update the index of the card after being moved in current array,
+   or drooped into a new array
+  */
+  public drop(event: CdkDragDrop<Card[], any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -186,7 +188,7 @@ export class KanbanBoardComponent implements OnInit {
 
   /* Dialog to add new epic */
   public openNewEpicDialog(): void {
-    const dialog = this.dialog.open(EpicDialogComponent, {
+    const dialog: MatDialogRef<EpicDialogComponent, any> = this.dialog.open(EpicDialogComponent, {
       width: '450px',
       data: {}
     });
@@ -296,27 +298,28 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   public loadFromLocal() {
-    const loadTodo = localStorage.getItem('todo');
-    if (loadTodo != null) {
+
+    const loadTodo: string = localStorage.getItem('todo');
+    if (null != loadTodo) {
       this.todo = JSON.parse(loadTodo);
     }
-    const loadWip = localStorage.getItem('wip');
+    const loadWip: string = localStorage.getItem('wip');
     if (loadWip != null) {
       this.wip = JSON.parse(loadWip);
     }
-    const loadReview = localStorage.getItem('review');
+    const loadReview: string = localStorage.getItem('review');
     if (loadReview != null) {
       this.review = JSON.parse(loadReview);
     }
-    const loadAccepted = localStorage.getItem('accepted');
+    const loadAccepted: string = localStorage.getItem('accepted');
     if (loadAccepted != null) {
       this.accepted = JSON.parse(loadAccepted);
     }
-    const loadMembers = localStorage.getItem('members');
+    const loadMembers: string = localStorage.getItem('members');
     if (loadMembers != null) {
       this.members = JSON.parse(loadMembers);
     }
-    const loadEpics = localStorage.getItem('epics');
+    const loadEpics: string = localStorage.getItem('epics');
     if (loadEpics != null) {
       this.epics = JSON.parse(loadEpics);
     }
