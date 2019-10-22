@@ -73,7 +73,7 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   // function to calculate and update the index of the card after being moved in current array,
-  // or droped into a new array
+  // or drooped into a new array
   public drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
@@ -134,15 +134,19 @@ export class KanbanBoardComponent implements OnInit {
         };
 
         // find the array that contains the card edited and update it.
+        // tslint:disable-next-line:no-shadowed-variable
         if (this.todo.some(data => data.id === id)) {
           this.todo.splice(index, 1, obj);
           this.saveToLocal();
+          // tslint:disable-next-line:no-shadowed-variable
         } else if (this.wip.some(data => data.id === id)) {
           this.wip.splice(index, 1, obj);
           this.saveToLocal();
+          // tslint:disable-next-line:no-shadowed-variable
         } else if (this.review.some(data => data.id === id)) {
           this.review.splice(index, 1, obj);
           this.saveToLocal();
+          // tslint:disable-next-line:no-shadowed-variable
         } else if (this.accepted.some(data => data.id === id)) {
           this.accepted.splice(index, 1, obj);
           this.saveToLocal();
