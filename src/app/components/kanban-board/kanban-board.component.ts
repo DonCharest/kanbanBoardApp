@@ -55,7 +55,7 @@ export class KanbanBoardComponent implements OnInit {
     this.accepted = [];
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // load mock data
     this.members = this.provider.getMembers();
     this.epics = this.provider.getEpics();
@@ -68,7 +68,7 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   // function to pad string
-  public leftFillNum = (num: any, targetLength: any): string => {
+  public leftFillNum: (num: any, targetLength: any) => string = (num: any, targetLength: any): string => {
     return num.toString().padStart(targetLength);
   }
 
@@ -76,7 +76,7 @@ export class KanbanBoardComponent implements OnInit {
    function to calculate and update the index of the card after being moved in current array,
    or drooped into a new array
   */
-  public drop(event: CdkDragDrop<Card[], any>) {
+  public drop(event: CdkDragDrop<Card[], any>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -258,36 +258,36 @@ export class KanbanBoardComponent implements OnInit {
   }
 
   // methods to remove members
-  public removeMember(index: number) {
+  public removeMember(index: number): void {
     this.members.splice(index, 1);
     this.saveToLocal();
   }
 
   // methods to remove members
-  public removeEpic(index: number) {
+  public removeEpic(index: number): void {
     this.epics.splice(index, 1);
     this.saveToLocal();
   }
 
   // methods to remove cards
-  public removeToDo(index: number) {
+  public removeToDo(index: number): void {
     this.todo.splice(index, 1);
     this.saveToLocal();
   }
-  public removeWiP(index: number) {
+  public removeWiP(index: number): void {
     this.wip.splice(index, 1);
     this.saveToLocal();
   }
-  public removeReview(index: number) {
+  public removeReview(index: number): void {
     this.review.splice(index, 1);
     this.saveToLocal();
   }
-  public removeAccepted(index: number) {
+  public removeAccepted(index: number): void {
     this.accepted.splice(index, 1);
     this.saveToLocal();
   }
 
-  public saveToLocal() {
+  public saveToLocal(): void {
     localStorage.setItem('todo', JSON.stringify(this.todo));
     localStorage.setItem('wip', JSON.stringify(this.wip));
     localStorage.setItem('review', JSON.stringify(this.review));
@@ -297,7 +297,7 @@ export class KanbanBoardComponent implements OnInit {
     localStorage.setItem('members', JSON.stringify(this.members));
   }
 
-  public loadFromLocal() {
+  public loadFromLocal(): void {
 
     const loadTodo: string = localStorage.getItem('todo');
     if (null != loadTodo) {
